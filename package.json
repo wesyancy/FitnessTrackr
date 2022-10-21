@@ -10,8 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dom": "^0.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesyancy/FitnessTrackr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wesyancy/FitnessTrackr/issues"
+  },
+  "homepage": "https://github.com/wesyancy/FitnessTrackr#readme"
 }
