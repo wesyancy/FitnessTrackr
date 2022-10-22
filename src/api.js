@@ -120,6 +120,10 @@ export const grabData = async (token) => {
       try {
         const response = await fetch(`${baseURL}/activities/${activity.id}`, {
             method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: activity.name,
                 description: activity.description
@@ -146,5 +150,122 @@ export const grabData = async (token) => {
       }
       catch(ex){
         console.log("Error obtaining routines for this activity")
+      }
+  }
+  // should name, goal, is Public be in an object? Do we need headers section?
+  export const createRoutine = async(token, {name, goal, isPublic}) => {
+      try {
+        const response = await fetch(`${baseURL}/routines`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                name: name,
+                goal: goal,
+                isPublic: isPublic
+            })
+        })
+        const result = await response.json();
+        return result;
+      }
+      catch(ex){
+        console.log("Error creating routine")
+      }
+  }
+// token?
+  export const editRoutine = async(token, routine) => {
+      try {
+        const response = await fetch(`${baseURL}/routines/${routine.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                name: routine.name,
+                goal: routine.goal, 
+                isPublic: routine.isPublic
+            })
+        })
+        const result = await response.json();
+        return result;
+      }
+      catch(ex){
+          console.log("Error updating routine")
+      }
+  }
+
+  export const deleteRoutine = async(token, routineId) => {
+      try {
+        const response = await fetch(`${baseURL}/routines/${routineId}`, {
+            method: "DELETE",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        const result = await response.json();
+        return result;
+      }
+      catch(ex) {
+        console.log("Error deleting routine")
+      }
+  }
+  //passing in full routineActivity object, use individual parts?
+  export const attachActivitytoRoutine = async(routineActivity) => {
+      try {
+        const response = await fetch(`${baseURL}/routines/${routineActivity.routineId}/activities`, {
+            method: "POST",
+            body: JSON.stringify({
+                activityId: routineActivity.activityId,
+                count: routineActivity.count,
+                duration: routineActivity.duration
+            })
+        })
+        const result = await response.json();
+        return result;
+      }
+      catch(ex) {
+        console.log("Error attaching to routine")
+      }
+  }
+
+  export const updateRoutineActivity = async(token, routineActivity) => {
+      try{
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                count: routineActivity.count,
+                duration: routineActivity.duration
+            })
+        })
+        const result = await response.json();
+        return result;
+      }
+      catch(ex){
+          console.log("Error updating routine activity")
+      }
+  }
+
+  export const deleteRoutineActivity = async(token, routineActivity) => {
+      try{
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.id}`, {
+            method : "DELETE", 
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+        const result = await response.json();
+        return result;
+      }
+      catch(ex){
+          console.log("Error deleting routine activity")
       }
   }
