@@ -1,7 +1,7 @@
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api'
 
 export const getActivities = async () => {
-    try{
+    try {
         const response = await fetch(`${baseURL}/activities`, {
             headers: {
                 'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ export const registerUser = async (username, password) => {
         const result = await response.json();
         return result;
     }
-    catch (ex){
+    catch (ex) {
         console.log('Error registering user')
     }
 }
@@ -58,39 +58,39 @@ export const loginUser = async (username, password) => {
 }
 
 export const grabData = async (token) => {
-    try{
-      const response = await fetch(`${baseURL}/users/me`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      const result = await response.json();
-      return result;
-    }
-    catch(ex){
-      console.log("Error getting user data")
-    }
-  }
-
-  //should we incorporate tokens for private routines? See API documentation.
-  export const getRoutines = async (username) => {
-      try{
-        const response = await fetch(`${baseURL}/users/${username}/routines`, {
+    try {
+        const response = await fetch(`${baseURL}/users/me`, {
             headers: {
                 'Content-Type': 'application/json',
-            },            
+                'Authorization': `Bearer ${token}`
+            },
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
-          console.log("Error getting routines")
-      }
-  }
+    }
+    catch (ex) {
+        console.log("Error getting user data")
+    }
+}
 
-  export const createActivity = async (token, activity) => {
-      try {
+//should we incorporate tokens for private routines? See API documentation.
+export const getRoutines = async (username) => {
+    try {
+        const response = await fetch(`${baseURL}/users/${username}/routines`, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+        const result = await response.json();
+        return result;
+    }
+    catch (ex) {
+        console.log("Error getting routines")
+    }
+}
+
+export const createActivity = async (token, activity) => {
+    try {
         const response = await fetch(`${baseURL}/activities`, {
             method: "POST",
             headers: {
@@ -103,19 +103,19 @@ export const grabData = async (token) => {
                     name: activity.name,
                     description: activity.description
                 }
-            })  
+            })
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
-          console.log("Error creating activity")
-      }
-  }
+    }
+    catch (ex) {
+        console.log("Error creating activity")
+    }
+}
 
-    //Should this take a token? API says anyone should be able to update, but requires user to be logged in.
-  export const editActivity = async(activity, token) => {
-      try {
+//Should this take a token? API says anyone should be able to update, but requires user to be logged in.
+export const editActivity = async (activity, token) => {
+    try {
         const response = await fetch(`${baseURL}/activities/${activity.id}`, {
             method: "PATCH",
             body: JSON.stringify({
@@ -126,14 +126,14 @@ export const grabData = async (token) => {
         const result = await response.json();
         console.log("Post Successfully Edited!")
         return result;
-      }
-      catch(ex) {
+    }
+    catch (ex) {
         console.log("Error editing activity")
-      }
-  }
+    }
+}
 
-  export const getRoutineActivities = async(activity) => {
-      try {
+export const getRoutineActivities = async (activity) => {
+    try {
         const response = await fetch(`${baseURL}/activities/${activity.id}`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -141,8 +141,8 @@ export const grabData = async (token) => {
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
+    }
+    catch (ex) {
         console.log("Error obtaining routines for this activity")
-      }
-  }
+    }
+}
