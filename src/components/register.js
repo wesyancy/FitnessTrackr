@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
 
-
 const Register = ({ setToken, navigate }) => {
-  // props.setToken
-  // const {setToken} = props
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
   const handleSubmit = async () => {
 
     const results = await registerUser(username, password);

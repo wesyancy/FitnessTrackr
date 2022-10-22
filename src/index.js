@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
-import '.public/style.css';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import './style.css';
 import { Register, Login } from './components';
 
-
-
 const App = () => {
+  
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
-
   const navigate = useNavigate();
 
   function logout() {
@@ -27,7 +23,6 @@ const App = () => {
 
   // async function getMe() {
   //   const storedToken = window.localStorage.getItem('token');
-
   //   if (!token) {
   //     if (storedToken) {
   //       setToken(storedToken);
@@ -76,7 +71,6 @@ const App = () => {
       </Routes>
     </div>
   )
-
 }
 
 const app = document.querySelector('#app');
