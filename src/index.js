@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login } from './components';
-import '.public/style.css';
-
+import { Register, Login, Home, Navbar, Activities, Routines } from './components';
+import './style.css'
 const App = () => {
-  
+
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
@@ -67,6 +66,24 @@ const App = () => {
             navigate={navigate}
             isLoggedIn={isLoggedIn}
             setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/activities'
+          element={<Activities
+            setToken={setToken}
+            navigate={navigate}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/routines'
+          element={<Routines
+            setToken={setToken}
+            navigate={navigate}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
           />}
         />
       </Routes>
