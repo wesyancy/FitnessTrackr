@@ -1,4 +1,3 @@
-
 //Wes - I got rid of the slash at the end of the baseURL
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api'
 

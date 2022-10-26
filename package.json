@@ -25,7 +25,6 @@
   "bugs": {
     "url": "https://github.com/wesyancy/FitnessTrackr/issues"
   },
-  "homepage": "https://github.com/wesyancy/FitnessTrackr#readme",
   "browserslist": {
     "production": [
       ">0.2%",

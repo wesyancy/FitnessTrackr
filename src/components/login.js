@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { loginUser } from '../api';
 
 const Login = ({ setToken, navigate, setIsLoggedIn }) => {
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  
   
   const handleSubmit = async () => {
     const results = await loginUser(username, password);
@@ -19,6 +19,7 @@ const Login = ({ setToken, navigate, setIsLoggedIn }) => {
   }
   
   return (
+    
     <form onSubmit={(event) => {
       event.preventDefault();
       handleSubmit();
