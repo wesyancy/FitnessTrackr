@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
@@ -13,9 +14,15 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^6.4.2",
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wesyancy/FitnessTrackr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wesyancy/FitnessTrackr/issues"
   },
   "browserslist": {
     "production": [
