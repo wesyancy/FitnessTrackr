@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import { Register, Login, Home, Navbar, Activities, Routines } from './components';
+import { getActivities } from './api';
 import './style.css'
 
 const App = () => {
-
+  const [activities, setActvities] = useState([])
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
-  
+
   const navigate = useNavigate();
 
   function logout() {
@@ -18,9 +19,15 @@ const App = () => {
     setUser({});
   }
 
-  // useEffect(() => {
-  //   fetchPosts();
-  // }, [token])
+  async function fetchActivities() {
+    const results = await getActivities()
+    // console.log(results)
+    setActvities(results)
+  }
+
+  useEffect(() => {
+    fetchActivities();
+  }, [activities])
 
   // useEffect(() => {
   //   getMe();
@@ -31,6 +38,11 @@ const App = () => {
       <h1>Fitness Trackr</h1>
       <Navbar logout={logout} token={token} user={user} />
       <Routes>
+        < Route
+          path='/home'
+          element={<Home
+          />}
+        />
         <Route
           path='/'
           element={<Home
@@ -57,8 +69,10 @@ const App = () => {
         <Route
           path='/activities'
           element={<Activities
+            activities={activities}
             setToken={setToken}
             navigate={navigate}
+            fetchActivities={fetchActivities}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}
