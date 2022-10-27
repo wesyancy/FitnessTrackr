@@ -49,7 +49,7 @@ const MakeActivity = ({fetchActivities, navigate}) => {
                     />
                 </div>
                 <button type='submit'>Submit</button>
-                <Link to='activities'><button>Back</button></Link>
+                <Link to='/activities'><button>Back</button></Link>
             </form>
         )
     }
