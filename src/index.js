@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines } from './components';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity } from './components';
 import { getActivities } from './api';
 import './style.css'
 
@@ -69,6 +69,17 @@ const App = () => {
         <Route
           path='/activities'
           element={<Activities
+            activities={activities}
+            setToken={setToken}
+            navigate={navigate}
+            fetchActivities={fetchActivities}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/createActivity'
+          element={<MakeActivity
             activities={activities}
             setToken={setToken}
             navigate={navigate}

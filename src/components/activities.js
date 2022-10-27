@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const Activities = ({ activities, navigate, fetchActivities }) => {
     const token = window.localStorage.getItem('token')
@@ -30,6 +31,11 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
+                        <Link to='/createActivity'>
+                            <button id='createActivityButton'>
+                                Create Activity
+                            </button>
+                        </Link>
                     </form>
                 </span>
                 {
@@ -64,6 +70,11 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
+                        <Link to='/createActivity'>
+                            <button id='createActivityButton'>
+                                Create Activity
+                            </button>
+                        </Link>
                     </form>
                 </span>
                 {
