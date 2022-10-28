@@ -2,20 +2,23 @@ import React, { useState } from 'react';
 import { registerUser } from '../api';
 
 const Register = ({ setToken, navigate }) => {
-  
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async () => {
 
     const results = await registerUser(username, password);
 
-    if (results.success) {
-      setToken(results.data.token);
-      window.localStorage.setItem('token', results.data.token);
-      navigate('/profile');
+    if (results.token) {
+      setToken(results.token);
+      window.localStorage.setItem('token', results.token);
+      window.localStorage.setItem('username', username);
+      // navigate('/Home');
+      console.log(results)
     }
     else {
-      console.log(results.error.message)
+      console.log("Registration Error")
+      console.log(results)
     }
   }
 
@@ -24,6 +27,7 @@ const Register = ({ setToken, navigate }) => {
       event.preventDefault();
       handleSubmit();
     }}>
+      <h1>Register</h1>
       <input
         id='createTitle'
         type='text'

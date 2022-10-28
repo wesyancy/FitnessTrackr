@@ -100,10 +100,8 @@ export const grabData = async (token) => {
             },
             body: JSON.stringify({
                 //used activity object - not used in API docs.
-                activity: {
                     name: activity.name,
                     description: activity.description
-                }
             })  
         })
         const result = await response.json();

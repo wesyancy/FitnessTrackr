@@ -1,44 +1,57 @@
 import React, { useState } from 'react';
 import { loginUser } from '../api';
+// import { Link } from 'react-router-dom';
+// import { Button } from '@mui/material';
 
-const Login = ({ setToken, navigate, setIsLoggedIn }) => {
-  
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  
+// import { grabData } from '../api';
+
+const Login = ({ setToken, navigate }) => {
+
+  const [username, checkUsername] = useState('')
+  const [password, checkPassword] = useState('')
+
   const handleSubmit = async () => {
     const results = await loginUser(username, password);
-    if (results.success) {
-      setToken(results.data.token);
-      window.localStorage.setItem('token', results.data.token);
-      navigate('/profile');
-      setIsLoggedIn(username)
+    if (results.token) {
+      setToken(results.token)
+      window.localStorage.setItem('token', results.token)
+      window.localStorage.setItem('username', username)
+      console.log(results.message)
+      // console.log(results)
+      // grabData()
+      navigate('/Home');
     } else {
-      console.log(results.error.message)
+      console.log("Login Error")
+      console.log(results.message)
     }
   }
-  
+
   return (
-    
-    <form onSubmit={(event) => {
-      event.preventDefault();
+    <form id='LoginContainer' onSubmit={(event) => {
+      event.preventDefault()
       handleSubmit();
     }}>
-      <input 
-        id='createTitle'
+      <h1>Login</h1>
+      <input
+        className='PostInput'
         type='text'
         placeholder='Enter Username'
-        onChange={(event) => setUsername(event.target.value)}
+        onChange={(event) => checkUsername(event.target.value)}
       />
-      <input 
-        id='createTitle'
+      <input
+        className='PostInput'
         type='password'
         placeholder='Enter Password'
-        onChange={(event) => setPassword(event.target.value)}
+        onChange={(event) => checkPassword(event.target.value)}
       />
-      <button type='submit'>Submit</button>
+      <button type='submit'>Login</button>
+      <div>
+        {/* <Link to='/Register'>New User? Click Here to Register</Link> */}
+      </div>
     </form>
+
   )
+
 }
 
 export default Login;
