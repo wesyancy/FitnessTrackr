@@ -5,11 +5,9 @@ import { loginUser } from '../api';
 
 // import { grabData } from '../api';
 
-const Login = ({setToken, navigate}) => {
-
+const Login = ({setToken, navigate, setLoginErrorMessage, loginErrorMessage}) => {
     const [username, checkUsername] = useState('')
     const [password, checkPassword] = useState('')
-
     const handleSubmit = async () => {
         const results = await loginUser(username, password);
         if (results.token) {
@@ -22,9 +20,12 @@ const Login = ({setToken, navigate}) => {
         navigate('/Home');
         } else {
             console.log("Login Error")
-            console.log(results.message)
+            setLoginErrorMessage(results.message)
+            console.log(loginErrorMessage)
         }
     }
+
+        
 
     return (
         <form id='LoginContainer' onSubmit={(event) => {
@@ -32,6 +33,7 @@ const Login = ({setToken, navigate}) => {
          handleSubmit();
         }}>
             <h1>Login</h1>
+            <div>{`${loginErrorMessage}`}</div>
             <input
             className='PostInput'
              type='text'

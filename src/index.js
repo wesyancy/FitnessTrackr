@@ -10,6 +10,8 @@ const App = () => {
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
+  const [loginErrorMessage, setLoginErrorMessage] = useState('');
+  const [regErrorMessage, setRegErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -55,6 +57,8 @@ const App = () => {
             setToken={setToken}
             token={token}
             navigate={navigate}
+            setRegErrorMessage={setRegErrorMessage}
+            regErrorMessage={regErrorMessage}
           />}
         />
         <Route
@@ -63,6 +67,8 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             isLoggedIn={isLoggedIn}
+            setLoginErrorMessage={setLoginErrorMessage}
+            loginErrorMessage={loginErrorMessage}
             setIsLoggedIn={setIsLoggedIn}
           />}
         />
