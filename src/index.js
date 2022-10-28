@@ -11,6 +11,8 @@ const App = () => {
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
+  const [loginErrorMessage, setLoginErrorMessage] = useState('');
+  const [regErrorMessage, setRegErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -34,8 +36,11 @@ const App = () => {
 
   useEffect(() => {
     fetchActivities();
+  }, [activities])
+  
+  useEffect(() => {
     fetchRoutines();
-  }, [activities, routines])
+  }, [routines])
 
   // useEffect(() => {
   //   getMe();
