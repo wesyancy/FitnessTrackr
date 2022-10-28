@@ -1,66 +1,74 @@
 import React, { useState } from 'react';
-import { createActivity } from '../api';
+import { createRoutine } from '../api';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const MakeActivity = ({ fetchActivities, navigate }) => {
+const MakeRoutine = ({ fetchRoutines, navigate }) => {
     const token = window.localStorage.getItem('token')
-    const [name, activityName] = useState('')
-    const [description, activityDescription] = useState('')
-    const activity = { name: name, description: description }
+    const [name, routineName] = useState('')
+    const [goal, routineGoal] = useState('')
+    const [isPublic, setIsPublic] = useState(null)
+    const routine = { name: name, goal: goal , isPublic: isPublic }
 
     const handleSubmit = async () => {
-        const results = await createActivity(token, activity)
+        const results = await createRoutine(token, routine)
         if (results.name) {
-            fetchActivities()
-            navigate('/activities')
+            fetchRoutines()
+            navigate('/routines')
             return (
                 <div>
                     <h3>{name}</h3>
-                    <p><strong>Description:</strong>{description}</p>
+                    <p><strong>Goal:</strong>{goal}</p>
                 </div>
             )
         }
         else {
-            console.log("Error creating activity")
+            console.log("Error creating routine")
         }
     }
 
     if (token) {
         return (
-            <form id="CreateActivityContainer" onSubmit={(event) => {
+            <form id="CreateRoutineContainer" onSubmit={(event) => {
                 event.preventDefault()
                 handleSubmit();
             }}>
-                <h1>Create an Activity</h1>
+                <h1>Create an Routine</h1>
                 <div>
                     <input
-                        className='ActivityInput'
+                        className='RoutineInput'
                         type='name'
-                        placeholder='Enter Activity Name'
-                        onChange={(event) => activityName(event.target.value)}
+                        placeholder='Enter Routine Name'
+                        onChange={(event) => routineName(event.target.value)}
                     />
                 </div>
                 <div>
                     <input
-                        className='ActivityInput'
-                        type='name'
-                        placeholder='Enter Activity Description'
-                        onChange={(event) => activityDescription(event.target.value)}
+                        className='RoutineInput'
+                        type='text'
+                        placeholder='Enter Routine Goal'
+                        onChange={(event) => routineGoal(event.target.value)}
+                    />
+                </div>
+                <div>
+                    <input
+                        className='RoutineInput'
+                        type='checkbox'
+                        onChange={(event) => setIsPublic(event.target.value)}
                     />
                 </div>
                 <button type='submit'>Submit</button>
-                <Link to='/activities'><button>Back</button></Link>
+                <Link to='/routines'><button>Back</button></Link>
             </form>
         )
     }
     else {
         return (
             <div id='FlexContainer'>
-                <h2>Please Login or Register to Begin Creating Activities</h2>
+                <h2>Please Login or Register to Begin Creating Routines</h2>
             </div>
         )
     }
 }
 
-export default MakeActivity
+export default MakeRoutine

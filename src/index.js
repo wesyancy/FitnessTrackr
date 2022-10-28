@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity } from './components';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine } from './components';
 import { getActivities, getRoutines } from './api';
 import './style.css'
 
@@ -24,23 +24,18 @@ const App = () => {
 
   async function fetchActivities() {
     const results = await getActivities();
-    // console.log(results)
     setActvities(results)
   }
 
   async function fetchRoutines() {
     const results = await getRoutines();
-    // console.log(results)
     setRoutines(results)
   }
 
   useEffect(() => {
     fetchActivities();
-  }, [activities])
-  
-  useEffect(() => {
     fetchRoutines();
-  }, [routines])
+  }, [])
 
   // useEffect(() => {
   //   getMe();
@@ -86,8 +81,6 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             fetchActivities={fetchActivities}
-          // isLoggedIn={isLoggedIn}
-          // setIsLoggedIn={setIsLoggedIn}
           />}
         />
         <Route
@@ -97,8 +90,15 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             fetchActivities={fetchActivities}
-          // isLoggedIn={isLoggedIn}
-          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/createRoutine'
+          element={<MakeRoutine
+            routines={routines}
+            setToken={setToken}
+            navigate={navigate}
+            fetchRoutines={fetchRoutines}
           />}
         />
         <Route
@@ -108,8 +108,6 @@ const App = () => {
             navigate={navigate}
             routines={routines}
             fetchRoutines={fetchRoutines}
-          // isLoggedIn={isLoggedIn}
-          // setIsLoggedIn={setIsLoggedIn}
           />}
         />
       </Routes>

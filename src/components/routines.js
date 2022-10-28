@@ -8,7 +8,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
     let delivery = ''
 
     function routineMatches(routine, text) {
-        if (routine.name.toLowerCase().includes(text.toLowerCase()) || routine.description.toLowerCase().includes(text.toLowerCase())) {
+        if (routine.name.toLowerCase().includes(text.toLowerCase()) || routine.goal.toLowerCase().includes(text.toLowerCase())) {
             return true
         }
         else {
@@ -43,13 +43,13 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                 </span>
                 {
                     routinesToDisplay.map((routine) => {
-                        const { name, description, id } = routine
+                        const { name, goal, id } = routine
                         return (
                             <main>
                                 <div id='Routines'>
                                     <div id='Routine' key={id}>
-                                        <h3 id='RoutineName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
+                                        <h3 id='RoutineName'>Name: {name}</h3>
+                                        <p><strong>Goal: </strong>{goal}</p>
                                     </div>
                                 </div>
                             </main>
@@ -81,13 +81,14 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                 </span>
                 {
                     routines.map((routine) => {
-                        const { name, description, id } = routine
+                        const { name, goal, id } = routine
+                        // console.log (routine)
                         return (
                             <main>
                                 <div id='Routines'>
                                     <div id='Routine' key={id}>
-                                        <h3 id='RoutineName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
+                                        <h3 id='RoutineName'>Name: {name}</h3>
+                                        <p><strong>Goal: </strong>{goal}</p>
                                     </div>
                                 </div>
                             </main>
@@ -114,13 +115,13 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                 </span>
                 {
                     routinesToDisplay.map((routine) => {
-                        const { name, description, id } = routine
+                        const { name, goal, id } = routine
                         return (
                             <main>
                                 <div id='Routines'>
                                     <div id='Routine' key={id}>
-                                        <h3 id='RoutineName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
+                                        <h3 id='RoutineName'>Name: {name}</h3>
+                                        <p><strong>Goal: </strong>{goal}</p>
                                     </div>
                                 </div>
                             </main>
@@ -147,13 +148,14 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                 </span>
                 {
                     routinesToDisplay.map((routine) => {
-                        const { name, description, id } = routine
+                        const { name, goal, id } = routine
+                        // console.log (routine)
                         return (
                             <main>
                                 <div id='Routines'>
                                     <div id='Routine' key={id}>
-                                        <h3 id='RoutineName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
+                                        <h3 id='RoutineName'>Name: {name}</h3>
+                                        <p><strong>Goal: </strong>{goal}</p>
                                     </div>
                                 </div>
                             </main>
