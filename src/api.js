@@ -75,9 +75,9 @@ export const grabData = async (token) => {
   }
 
   //should we incorporate tokens for private routines? See API documentation.
-  export const getRoutines = async (username) => {
+  export const getRoutines = async () => {
       try{
-        const response = await fetch(`${baseURL}/users/${username}/routines`, {
+        const response = await fetch(`${baseURL}/routines`, {
             headers: {
                 'Content-Type': 'application/json',
             },            

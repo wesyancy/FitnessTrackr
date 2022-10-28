@@ -12,7 +12,7 @@ const MakeActivity = ({fetchActivities, navigate}) => {
     const handleSubmit = async () => {
         const results = await createActivity(token, activity)
         if (results.name) {
-            fetchActivities()
+            await fetchActivities()
             navigate('/activities')
             return(
                 <div>

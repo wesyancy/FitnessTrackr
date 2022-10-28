@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity } from './components';
-import { getActivities } from './api';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine } from './components';
+import { getActivities, getRoutines } from './api';
 import './style.css'
 
 const App = () => {
   const [activities, setActvities] = useState([])
+  const [routines, setRoutines] = useState([])
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
@@ -27,9 +28,18 @@ const App = () => {
     setActvities(results)
   }
 
+  async function fetchRoutines() {
+    const results = await getRoutines()
+    setRoutines(results)
+  }
+
   useEffect(() => {
     fetchActivities();
-  }, [activities])
+  }, [])
+
+  useEffect(() => {
+    fetchRoutines();
+  }, [])
 
   // useEffect(() => {
   //   getMe();
@@ -99,6 +109,19 @@ const App = () => {
           element={<Routines
             setToken={setToken}
             navigate={navigate}
+            routines={routines}
+            fetchRoutines={fetchRoutines}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/createRoutine'
+          element={<MakeRoutine
+            setToken={setToken}
+            navigate={navigate}
+            routines={routines}
+            fetchRoutines={fetchRoutines}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}
