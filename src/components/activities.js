@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-const Activities = ({ activities, navigate, fetchActivities }) => {
+const Activities = ({ activities, navigate, fetchActivities}) => {
     const token = window.localStorage.getItem('token')
     const [searchTerm, setSearchTerm] = useState('');
     let delivery = ''

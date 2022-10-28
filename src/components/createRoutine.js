@@ -33,7 +33,7 @@ const MakeRoutine = ({ fetchRoutines, navigate }) => {
                 event.preventDefault()
                 handleSubmit();
             }}>
-                <h1>Create an Routine</h1>
+                <h1>Create a Routine</h1>
                 <div>
                     <input
                         className='RoutineInput'
@@ -51,6 +51,7 @@ const MakeRoutine = ({ fetchRoutines, navigate }) => {
                     />
                 </div>
                 <div>
+                    Make Public?
                     <input
                         className='RoutineInput'
                         type='checkbox'

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine } from './components';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines } from './components';
 import { getActivities, getRoutines } from './api';
 import './style.css'
 
@@ -13,11 +13,15 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(null)
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
   const [regErrorMessage, setRegErrorMessage] = useState('');
+  const [actErrorMessage, setActErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
   function logout() {
     window.localStorage.removeItem('token');
+    setActErrorMessage('');
+    setRegErrorMessage('');
+    setLoginErrorMessage('')
     setToken('');
     setUser({});
   }
@@ -100,6 +104,8 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             fetchActivities={fetchActivities}
+            actErrorMessage={actErrorMessage}
+            setActErrorMessage={setActErrorMessage}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}
@@ -118,6 +124,17 @@ const App = () => {
         <Route
           path='/createRoutine'
           element={<MakeRoutine
+            setToken={setToken}
+            navigate={navigate}
+            routines={routines}
+            fetchRoutines={fetchRoutines}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/myRoutines'
+          element={<MyRoutines
             setToken={setToken}
             navigate={navigate}
             routines={routines}

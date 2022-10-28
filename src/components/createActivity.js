@@ -3,7 +3,7 @@ import { createActivity } from '../api';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const MakeActivity = ({fetchActivities, navigate}) => {
+const MakeActivity = ({fetchActivities, navigate, actErrorMessage, setActErrorMessage}) => {
     const token = window.localStorage.getItem('token')
     const [name, activityName] = useState('')
     const [description, activityDescription] = useState('')
@@ -11,8 +11,10 @@ const MakeActivity = ({fetchActivities, navigate}) => {
 
     const handleSubmit = async () => {
         const results = await createActivity(token, activity)
-        if (results.name) {
+        if (!results.error) {
             await fetchActivities()
+            console.log(results)
+            setActErrorMessage('')
             navigate('/activities')
             return(
                 <div>
@@ -22,7 +24,8 @@ const MakeActivity = ({fetchActivities, navigate}) => {
             )
         }
         else {
-            console.log("Error creating activity")
+            console.log(results)
+            setActErrorMessage(results.message)
         }
     }
     if(token){
@@ -32,6 +35,7 @@ const MakeActivity = ({fetchActivities, navigate}) => {
                 handleSubmit();
             }}>
                 <h1>Create an Activity</h1>
+                <div>{actErrorMessage}</div>
                 <div>
                     <input
                     className='ActivityInput'
