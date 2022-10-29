@@ -3,18 +3,20 @@ import { createRoutine } from '../api';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-const MakeRoutine = ({ fetchRoutines, navigate }) => {
+const MakeRoutine = ({ fetchRoutines, fetchUserRoutines, navigate, createRErrorMessage, setCreateRErrorMessage }) => {
     const token = window.localStorage.getItem('token')
     const [name, routineName] = useState('')
     const [goal, routineGoal] = useState('')
-    const [isPublic, setIsPublic] = useState(true)
+    const [isPublic, setIsPublic] = useState(false)
     const routine = { name: name, goal: goal , isPublic: isPublic }
 
     const handleSubmit = async () => {
         const results = await createRoutine(token, routine)
-        if (results.name) {
+        if (results.id) {
             fetchRoutines()
-            navigate('/routines')
+            fetchUserRoutines()
+            setCreateRErrorMessage('')
+            navigate('/myRoutines')
             return (
                 <div>
                     <h3>{name}</h3>
@@ -24,6 +26,7 @@ const MakeRoutine = ({ fetchRoutines, navigate }) => {
         }
         else {
             console.log("Error creating routine")
+            setCreateRErrorMessage("Error creating routine - Please ensure at least one field is filled out and routine name is not already in use")
         }
     }
 
@@ -34,6 +37,7 @@ const MakeRoutine = ({ fetchRoutines, navigate }) => {
                 handleSubmit();
             }}>
                 <h1>Create a Routine</h1>
+                <h3>{`${createRErrorMessage}`}</h3>
                 <div>
                     <input
                         className='RoutineInput'
@@ -58,7 +62,7 @@ const MakeRoutine = ({ fetchRoutines, navigate }) => {
                         onChange={(event) => setIsPublic(event.target.value)}
                     />
                 </div>
-                <button type='submit'>Submit</button>
+                <button type='submit' onClick={() => {fetchUserRoutines()}}>Submit</button>
                 <Link to='/routines'><button>Back</button></Link>
             </form>
         )

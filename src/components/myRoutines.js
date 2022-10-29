@@ -1,13 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { deleteRoutine } from '../api';
 
 const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines  }) => {
     const username = window.localStorage.getItem('username')
-    // const token = window.localStorage.getItem('token')
+    const token = window.localStorage.getItem('token')
     console.log(userRoutines)
-    useEffect(() => {
-        fetchUserRoutines();
-      }, [])
+    // useEffect(() => {
+    //     deleteRoutine();
+    //   }, [])
     return (
         <div>
             <Link to='/createRoutine'>
@@ -29,6 +30,7 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines  }) => {
                                     <div><Link to={`/routines/${id}`}>
                                             <button>Update Routine</button>
                                         </Link></div>
+                                        <button onClick={() => { deleteRoutine(token, id), fetchUserRoutines()}}>Delete Routine</button>
                                     <p><strong>Creator:</strong>{creatorName}</p>
                                     <p><strong>Goal:</strong>{goal}</p>
                                     <p><strong>Public:</strong>{JSON.stringify(isPublic)}</p>

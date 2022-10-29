@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { editRoutine } from '../api';
+// import { deleteRoutine } from '../api';
 
-const EditRoutine = ({ routines, fetchRoutines, navigate }) => {
+const EditRoutine = ({ routines, fetchRoutines, editRErrorMessage, setEditRErrorMessage, navigate }) => {
   const { routineId } = useParams();
   // console.log(postID)
   // console.log(posts)
@@ -24,7 +25,15 @@ const EditRoutine = ({ routines, fetchRoutines, navigate }) => {
       isPublic: newisPublic,
       id: routineId
     }
-    await editRoutine(updatedRoutine)
+    let results = await editRoutine(updatedRoutine)
+    if (results.error) {
+      console.log("Error updating Routine")
+      setEditRErrorMessage("Error editing routine - Please ensure at least one field is filled out and routine name is not already in use")
+    }
+    else{
+      navigate('./myRoutines')
+      setEditRErrorMessage('')
+    }
   }
   
   
@@ -33,10 +42,11 @@ const EditRoutine = ({ routines, fetchRoutines, navigate }) => {
       event.preventDefault();
       updateRoutine();
       fetchRoutines()
-      navigate('./myRoutines')
 
       
     }}>
+      <h1>Edit Routine</h1>
+      <h3>{`${editRErrorMessage}`}</h3>
       <div>
       <input 
         className='PostInput'

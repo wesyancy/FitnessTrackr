@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
 import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine } from './components';
-import { getActivities, getRoutines, getUserRoutines } from './api';
+import { getActivities, getRoutines, getUserRoutines, deleteRoutine } from './api';
 import './style.css'
 
 const App = () => {
@@ -15,6 +15,8 @@ const App = () => {
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
   const [regErrorMessage, setRegErrorMessage] = useState('');
   const [actErrorMessage, setActErrorMessage] = useState('');
+  const [createRErrorMessage, setCreateRErrorMessage] = useState('');
+  const [editRErrorMessage, setEditRErrorMessage] = useState('');
 
   const navigate = useNavigate();
 
@@ -23,7 +25,9 @@ const App = () => {
     window.localStorage.removeItem('username')
     setActErrorMessage('');
     setRegErrorMessage('');
-    setLoginErrorMessage('')
+    setLoginErrorMessage('');
+    setCreateRErrorMessage('');
+    setEditRErrorMessage('');
     setToken('');
     setUser({});
   }
@@ -58,6 +62,10 @@ const App = () => {
   useEffect(() => {
     fetchUserRoutines();
   }, [token])
+
+  // useEffect(() => {
+  //   deleteRoutine()
+  // }, [])
 
   return (
     <div id="navbar">
@@ -138,6 +146,9 @@ const App = () => {
             navigate={navigate}
             routines={routines}
             fetchRoutines={fetchRoutines}
+            fetchUserRoutines={fetchUserRoutines}
+            createRErrorMessage={createRErrorMessage}
+            setCreateRErrorMessage={setCreateRErrorMessage}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}
@@ -160,6 +171,8 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             fetchRoutines={fetchRoutines}
+            editRErrorMessage={editRErrorMessage}
+            setEditRErrorMessage={setEditRErrorMessage}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}
