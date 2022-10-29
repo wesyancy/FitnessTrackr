@@ -1,10 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-const MyRoutines = ({ navigate, userRoutines  }) => {
+const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines  }) => {
     const username = window.localStorage.getItem('username')
     // const token = window.localStorage.getItem('token')
     console.log(userRoutines)
+    useEffect(() => {
+        fetchUserRoutines();
+      }, [])
     return (
         <div>
             <Link to='/createRoutine'>
@@ -28,7 +31,7 @@ const MyRoutines = ({ navigate, userRoutines  }) => {
                                         </Link></div>
                                     <p><strong>Creator:</strong>{creatorName}</p>
                                     <p><strong>Goal:</strong>{goal}</p>
-                                    <p><strong>Public:</strong>{isPublic}</p>
+                                    <p><strong>Public:</strong>{JSON.stringify(isPublic)}</p>
                                     <p>{
                                     activities.map((activity) => {
                                         const { name, description, duration, count } = activity

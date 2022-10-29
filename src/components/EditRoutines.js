@@ -41,7 +41,7 @@ const EditRoutine = ({ routines, fetchRoutines, navigate }) => {
       <input 
         className='PostInput'
         type='text'
-        placeholder={name}
+        placeholder="Name"
         onChange={(event) => setNewName(event.target.value)}
       />
       </div>
@@ -49,7 +49,7 @@ const EditRoutine = ({ routines, fetchRoutines, navigate }) => {
       <input 
         className='PostInput'
         type='text'
-        placeholder={goal}
+        placeholder="Goal"
         onChange={(event) => setNewGoal(event.target.value)}
       />
       </div>
@@ -57,11 +57,11 @@ const EditRoutine = ({ routines, fetchRoutines, navigate }) => {
         Available for Public View?
       <input 
         type='checkbox'
-        checked={isPublic}
+        checked={newisPublic}
         onChange={(event) => setNewisPublic(event.target.checked)}
       />
       </div>
-      <button type='submit'>Edit Routine</button>
+      <button type='submit' >Edit Routine</button>
     </form>
   )
 }

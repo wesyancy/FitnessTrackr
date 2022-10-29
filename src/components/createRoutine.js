@@ -7,7 +7,7 @@ const MakeRoutine = ({ fetchRoutines, navigate }) => {
     const token = window.localStorage.getItem('token')
     const [name, routineName] = useState('')
     const [goal, routineGoal] = useState('')
-    const [isPublic, setIsPublic] = useState(null)
+    const [isPublic, setIsPublic] = useState(true)
     const routine = { name: name, goal: goal , isPublic: isPublic }
 
     const handleSubmit = async () => {
