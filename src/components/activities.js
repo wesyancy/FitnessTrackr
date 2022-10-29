@@ -1,21 +1,18 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-const Activities = ({ activities, navigate, fetchActivities }) => {
-    
+const Activities = ({ activities, navigate, fetchActivities}) => {
     const token = window.localStorage.getItem('token')
     const [searchTerm, setSearchTerm] = useState('');
     let delivery = ''
 
     function activityMatches(activity, text) {
-        
         if (activity.name.toLowerCase().includes(text.toLowerCase()) || activity.description.toLowerCase().includes(text.toLowerCase())) {
             return true
         }
         else {
             return false
         }
-        
     }
 
     const filteredActivities = activities.filter(activity => activityMatches(activity, searchTerm));

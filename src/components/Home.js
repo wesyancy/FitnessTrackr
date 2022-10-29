@@ -5,6 +5,8 @@ const Home = ({ token }) => {
   return (
     <div>
       <h2>Welcome to Fitness Trackr</h2>
+      {/* <Link to='/posts'><button id='homeButts'>Posts</button></Link>
+      { token ? <Link to='/profile'><button id='homeButts'>Profile</button></Link> : null} */}
     </div>
   )
 }

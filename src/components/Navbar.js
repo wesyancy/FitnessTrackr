@@ -15,7 +15,7 @@ const Navbar = ({ logout, user }) => {
                     <ul className='navlist'>
                         <Link to='/home'>Home</Link>
                         <Link to='/routines'>Routines</Link>
-                        <Link to='/myRoutines'>My Routines</Link>
+                        {/* <Link to='/myRoutines'>My Routines</Link> */}
                         <Link to='/activities'>Activities</Link>
                         <Link to='/register'>Register</Link>
                         <Link to='/login'>Login</Link>

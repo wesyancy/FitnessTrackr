@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { registerUser } from '../api';
 
-const Register = ({ setToken, navigate }) => {
-
+const Register = ({ setToken, navigate, setRegErrorMessage, regErrorMessage }) => {
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleSubmit = async () => {
@@ -14,11 +14,13 @@ const Register = ({ setToken, navigate }) => {
       window.localStorage.setItem('token', results.token);
       window.localStorage.setItem('username', username);
       // navigate('/Home');
-      console.log(results)
+      console.log(results.message)
+      setRegErrorMessage(results.message)
     }
     else {
       console.log("Registration Error")
-      console.log(results)
+      console.log(results.message)
+      setRegErrorMessage(results.message)
     }
   }
 
@@ -28,6 +30,7 @@ const Register = ({ setToken, navigate }) => {
       handleSubmit();
     }}>
       <h1>Register</h1>
+      <div>{`${regErrorMessage}`}</div>
       <input
         id='createTitle'
         type='text'

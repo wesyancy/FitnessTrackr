@@ -74,9 +74,9 @@ export const grabData = async (token) => {
     }
 }
 
-//should we incorporate tokens for private routines? See API documentation.
-export const getRoutines = async (username) => {
-    try {
+  //should we incorporate tokens for private routines? See API documentation.
+  export const getRoutines = async () => {
+      try{
         const response = await fetch(`${baseURL}/routines`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -102,8 +102,25 @@ export const getRoutines = async (username) => {
     //   }
 }
 
-export const createActivity = async (token, activity) => {
-    try {
+  export const getUserRoutines = async (token, username) => {
+      try{
+        const response = await fetch(`${baseURL}/users/${username}/routines`,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+        const result = await response.json();
+        // console.log(result)
+        return result;
+      }
+      catch(ex){
+          console.log("Error getting user's routines")
+      }
+  }
+
+  export const createActivity = async (token, activity) => {
+      try {
         const response = await fetch(`${baseURL}/activities`, {
             method: "POST",
             headers: {
@@ -112,9 +129,9 @@ export const createActivity = async (token, activity) => {
             },
             body: JSON.stringify({
                 //used activity object - not used in API docs.
-                name: activity.name,
-                description: activity.description
-            })
+                    name: activity.name,
+                    description: activity.description
+            })  
         })
         const result = await response.json();
         return result;
@@ -186,27 +203,29 @@ export const createRoutine = async (token, { name, goal, isPublic }) => {
 }
 
 // token?
-export const editRoutine = async (token, routine) => {
-    try {
-        const response = await fetch(`${baseURL}/routines/${routine.id}`, {
+  export const editRoutine = async({token, name, goal, isPublic, id}) => {
+      try {
+        const response = await fetch(`${baseURL}/routines/${id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                name: routine.name,
-                goal: routine.goal,
-                isPublic: routine.isPublic
+                name,
+                goal,
+                isPublic
             })
         })
         const result = await response.json();
         return result;
-    }
-    catch (ex) {
-        console.log("Error updating routine")
-    }
-}
+      }
+      catch(ex){
+        //   console.log
+        //   console.log("Error updating routine")
+        console.log(console.error)
+      }
+  }
 
 export const deleteRoutine = async (token, routineId) => {
     try {
