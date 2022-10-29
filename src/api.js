@@ -90,6 +90,23 @@ export const grabData = async (token) => {
       }
   }
 
+  export const getUserRoutines = async (token, username) => {
+      try{
+        const response = await fetch(`${baseURL}/users/${username}/routines`,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+        const result = await response.json();
+        // console.log(result)
+        return result;
+      }
+      catch(ex){
+          console.log("Error getting user's routines")
+      }
+  }
+
   export const createActivity = async (token, activity) => {
       try {
         const response = await fetch(`${baseURL}/activities`, {
@@ -172,25 +189,27 @@ export const grabData = async (token) => {
       }
   }
 // token?
-  export const editRoutine = async(token, routine) => {
+  export const editRoutine = async({token, name, goal, isPublic, id}) => {
       try {
-        const response = await fetch(`${baseURL}/routines/${routine.id}`, {
+        const response = await fetch(`${baseURL}/routines/${id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({
-                name: routine.name,
-                goal: routine.goal, 
-                isPublic: routine.isPublic
+                name,
+                goal,
+                isPublic
             })
         })
         const result = await response.json();
         return result;
       }
       catch(ex){
-          console.log("Error updating routine")
+        //   console.log
+        //   console.log("Error updating routine")
+        console.log(console.error)
       }
   }
 

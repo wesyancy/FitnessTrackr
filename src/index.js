@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines } from './components';
-import { getActivities, getRoutines } from './api';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine } from './components';
+import { getActivities, getRoutines, getUserRoutines } from './api';
 import './style.css'
 
 const App = () => {
   const [activities, setActvities] = useState([])
   const [routines, setRoutines] = useState([])
+  const [userRoutines, setUserRoutines] = useState([])
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(null)
@@ -38,6 +39,14 @@ const App = () => {
     setRoutines(results)
   }
 
+  async function fetchUserRoutines() {
+    let token = window.localStorage.getItem('token')
+    let username = window.localStorage.getItem('username')
+    const results = await getUserRoutines(token, username)
+    console.log(results)
+    setUserRoutines(results)
+  }
+
   useEffect(() => {
     fetchActivities();
   }, [])
@@ -46,9 +55,9 @@ const App = () => {
     fetchRoutines();
   }, [])
 
-  // useEffect(() => {
-  //   getMe();
-  // }, [token])
+  useEffect(() => {
+    fetchUserRoutines();
+  }, [token])
 
   return (
     <div id="navbar">
@@ -138,7 +147,18 @@ const App = () => {
           element={<MyRoutines
             setToken={setToken}
             navigate={navigate}
+            userRoutines={userRoutines}
+            fetchUserRoutines={fetchUserRoutines}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/routines/:routineId'
+          element={<EditRoutine
             routines={routines}
+            setToken={setToken}
+            navigate={navigate}
             fetchRoutines={fetchRoutines}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
