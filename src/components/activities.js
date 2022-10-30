@@ -1,7 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
-const Activities = ({ activities, navigate, fetchActivities}) => {
+const Activities = ({ activities, navigate, fetchActivities }) => {
+    
     const token = window.localStorage.getItem('token')
     const [searchTerm, setSearchTerm] = useState('');
     let delivery = ''
@@ -22,22 +23,14 @@ const Activities = ({ activities, navigate, fetchActivities}) => {
         return (
             <Fragment>
                 <span id='activityHead'>
-                    <form className='top' onSubmit={(event) => {
-                        event.preventDefault()
-                    }}>
+                    <form id='searchForm' onSubmit={(event) => { event.preventDefault() }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
-                        {
-                            <Link to='/createActivity'>
-                                <button id='createActivityButton'>
-                                    Create Activity
-                                </button>
-                            </Link>
-                        }
+                        {<Link to='/createActivity'><button id='createActivityButton'>Create Activity</button></Link>}
                     </form>
                 </span>
                 {
@@ -62,37 +55,29 @@ const Activities = ({ activities, navigate, fetchActivities}) => {
         return (
             <Fragment>
                 <span id='activityHead'>
-                    <form className='top' onSubmit={(event) => {
-                        event.preventDefault()
-                    }}>
+                    <form id='searchForm' onSubmit={(event) => { event.preventDefault() }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
-                        <Link to='/createActivity'>
-                            <button id='createActivityButton'>
-                                Create Activity
-                            </button>
-                        </Link>
+                        <Link to='/createActivity'><button id='createActivityButton'>Create Activity</button></Link>
                     </form>
                 </span>
-                {
-                    activities.map((activity) => {
-                        const { name, description, id } = activity
-                        return (
-                            <main>
-                                <div id='Activities'>
-                                    <div id='Activity' key={id}>
-                                        <h3 id='ActivityName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
-                                    </div>
+                {activities.map((activity) => {
+                    const { name, description, id } = activity
+                    return (
+                        <main>
+                            <div id='Activities'>
+                                <div id='Activity' key={id}>
+                                    <h3 id='ActivityName'>{name}</h3>
+                                    <p><strong>Description</strong>{description}</p>
                                 </div>
-                            </main>
-                        )
-                    })
-                }
+                            </div>
+                        </main>
+                    )
+                })}
             </Fragment>
         )
     }
@@ -100,32 +85,28 @@ const Activities = ({ activities, navigate, fetchActivities}) => {
         return (
             <Fragment>
                 <span id='activityHead'>
-                    <form className='top' onSubmit={(event) => {
-                        event.preventDefault()
-                    }}>
+                    <form id='searchForm' onSubmit={(event) => { event.preventDefault() }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
                     </form>
                 </span>
-                {
-                    activitiesToDisplay.map((activity) => {
-                        const { name, description, id } = activity
-                        return (
-                            <main>
-                                <div id='Activities'>
-                                    <div id='Activity' key={id}>
-                                        <h3 id='ActivityName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
-                                    </div>
+                {activitiesToDisplay.map((activity) => {
+                    const { name, description, id } = activity
+                    return (
+                        <main>
+                            <div id='Activities'>
+                                <div id='Activity' key={id}>
+                                    <h3 id='ActivityName'>{name}</h3>
+                                    <p><strong>Description</strong>{description}</p>
                                 </div>
-                            </main>
-                        )
-                    })
-                }
+                            </div>
+                        </main>
+                    )
+                })}
             </Fragment>
         )
     }
@@ -133,32 +114,28 @@ const Activities = ({ activities, navigate, fetchActivities}) => {
         return (
             <Fragment>
                 <span id='activityHead'>
-                    <form className='top' onSubmit={(event) => {
-                        event.preventDefault()
-                    }}>
+                    <form id='searchForm' onSubmit={(event) => { event.preventDefault() }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
                     </form>
                 </span>
-                {
-                    activitiesToDisplay.map((activity) => {
-                        const { name, description, id } = activity
-                        return (
-                            <main>
-                                <div id='Activities'>
-                                    <div id='Activity' key={id}>
-                                        <h3 id='ActivityName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
-                                    </div>
+                {activitiesToDisplay.map((activity) => {
+                    const { name, description, id } = activity
+                    return (
+                        <main>
+                            <div id='Activities'>
+                                <div id='Activity' key={id}>
+                                    <h3 id='ActivityName'>{name}</h3>
+                                    <p><strong>Description</strong>{description}</p>
                                 </div>
-                            </main>
-                        )
-                    })
-                }
+                            </div>
+                        </main>
+                    )
+                })}
             </Fragment>
         )
     }

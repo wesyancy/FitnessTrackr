@@ -11,11 +11,11 @@ const Navbar = ({ logout, user }) => {
                 <nav id='navbar'>
                     <div id='navtitle'>Fitness Trackr</div>
                     <ul id='navlist'>
-                        <li><Link to='/home'>Home</Link></li>
-                        <li><Link to='/routines'>Routines</Link></li>
-                        <li><Link to='/activities'>Activities</Link></li>
-                        <li><Link to='/register'>Register</Link></li>
-                        <li><Link to='/login'>Login</Link></li>
+                        <button><Link to='/home'>Home</Link></button>
+                        <button><Link to='/routines'>Routines</Link></button>
+                        <button><Link to='/activities'>Activities</Link></button>
+                        <button><Link to='/register'>Register</Link></button>
+                        <button><Link to='/login'>Login</Link></button>
                     </ul>
                 </nav>
             </header>
@@ -26,11 +26,11 @@ const Navbar = ({ logout, user }) => {
                 <nav id='navbar'>
                     <div id='navtitle'>Fitness Trackr</div>
                     <ul id='navlist'>
-                        <li><Link className='anchor' to='/home'>Home</Link></li>
-                        <li><Link className='anchor' to='/routines'>Routines</Link></li>
-                        <li><Link className='anchor' to='/myRoutines'>My Routines</Link></li>
-                        <li><Link className='anchor' to='/activities'>Activities</Link></li>
-                        <li><Link to='/home' onClick={() => logout()}>Logout</Link></li>
+                        <button><Link className='anchor' to='/home'>Home</Link></button>
+                        <button><Link className='anchor' to='/routines'>Routines</Link></button>
+                        <button><Link className='anchor' to='/myRoutines'>My Routines</Link></button>
+                        <button><Link className='anchor' to='/activities'>Activities</Link></button>
+                        <button><Link to='/home' onClick={() => logout()}>Logout</Link></button>
                     </ul>
                 </nav>
             </header>
