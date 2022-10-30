@@ -8,6 +8,7 @@ const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines })
     const [durationNumber, setDuration] = useState(0)
     const [selectedActivity, setSelectedActivity] = useState(0)
     const { routineId } = useParams();
+    const token = window.localStorage.getItem('token');
     console.log(routineId)
 
     async function attachActivity() {
@@ -17,7 +18,7 @@ const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines })
             duration : durationNumber,
         }
         // console.log(attachedActivity)
-        let results = await attachActivitytoRoutine(attachedActivity, routineId)
+        let results = await attachActivitytoRoutine(token, attachedActivity, routineId)
         console.log(results)
         // console.log(attachedActivity)
         if (results.error) {

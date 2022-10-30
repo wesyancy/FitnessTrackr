@@ -230,12 +230,16 @@ export const grabData = async (token) => {
       }
   }
   //passing in full routineActivity object, use individual parts?
-  export const attachActivitytoRoutine = async(attachedActivity, id) => {
+  export const attachActivitytoRoutine = async(token, attachedActivity, id) => {
       try {
         // console.log(activityId, count, duration, id)
         console.log(attachedActivity)
         const response = await fetch(`${baseURL}/routines/${id}/activities`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 activityId: attachedActivity.activityId,
                 count: attachedActivity.count,
