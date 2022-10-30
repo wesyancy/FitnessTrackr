@@ -68,8 +68,7 @@ const App = () => {
   // }, [])
 
   return (
-    <div id="navbar">
-      <h1>Fitness Trackr</h1>
+    <div id="routes">
       <Navbar logout={logout} token={token} user={user} />
       <Routes>
         < Route

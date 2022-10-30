@@ -1,3 +1,53 @@
 * {
-    background-color: lightblue;
+    background-color: #d8c99b;
+    font-family: 'Oswald', 'Roboto Condensed', Impact, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-decoration: none;
+}
+
+body {
+    color: #8a4545;
+    text-decoration: none;
+}
+
+#navbar {
+    display: flex;
+    padding-top: 10%;
+    flex-direction: column;
+    margin: auto;
+    max-width: 70%;
+}
+
+#navtitle {
+    font-size: xx-large;
+    margin: auto;
+    /* background-color: white; */
+}
+
+#navlist * {
+    flex-direction: row;
+    font-size: x-large;
+    color: #273e47;
+    list-style: none;
+    max-width: 10%;
+    /* text-align: center; */
+    margin: none;
+}
+
+#navlist li {
+    /* max-width: 10%; */
+}
+
+#searchbar {
+    width: 70%;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background-color: white;
+    border: 1px solid black;
+}
+
+@media only screen and (max-width: 768px) {
+    /* #navbar * {
+      max-width: 50%;
+    } */
 }

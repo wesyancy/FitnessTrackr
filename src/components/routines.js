@@ -27,7 +27,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
@@ -81,7 +81,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
@@ -133,7 +133,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
@@ -180,7 +180,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}

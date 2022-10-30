@@ -8,17 +8,14 @@ const Navbar = ({ logout, user }) => {
     if (!token) {
         return (
             <header>
-                <nav className='nav-bar'>
-                    <div id='navtitle'>
-                        Fitness Trackr
-                    </div>
-                    <ul className='navlist'>
-                        <Link to='/home'>Home</Link>
-                        <Link to='/routines'>Routines</Link>
-                        {/* <Link to='/myRoutines'>My Routines</Link> */}
-                        <Link to='/activities'>Activities</Link>
-                        <Link to='/register'>Register</Link>
-                        <Link to='/login'>Login</Link>
+                <nav id='navbar'>
+                    <div id='navtitle'>Fitness Trackr</div>
+                    <ul id='navlist'>
+                        <li><Link to='/home'>Home</Link></li>
+                        <li><Link to='/routines'>Routines</Link></li>
+                        <li><Link to='/activities'>Activities</Link></li>
+                        <li><Link to='/register'>Register</Link></li>
+                        <li><Link to='/login'>Login</Link></li>
                     </ul>
                 </nav>
             </header>
@@ -26,15 +23,14 @@ const Navbar = ({ logout, user }) => {
     } else {
         return (
             <header>
-                <nav className='nav-bar'>
+                <nav id='navbar'>
                     <div id='navtitle'>Fitness Trackr</div>
-                    <ul className='navlist'>
-                        <Link className='anchor' to='/home'>Home</Link>
-                        <Link className='anchor' to='/routines'>Routines</Link>
-                        <Link className='anchor' to='/myRoutines'>My Routines</Link>
-                        <Link className='anchor' to='/activities'>Activities</Link>
-                        <Link to='/home' onClick={() => logout()
-                        }>Logout</Link>
+                    <ul id='navlist'>
+                        <li><Link className='anchor' to='/home'>Home</Link></li>
+                        <li><Link className='anchor' to='/routines'>Routines</Link></li>
+                        <li><Link className='anchor' to='/myRoutines'>My Routines</Link></li>
+                        <li><Link className='anchor' to='/activities'>Activities</Link></li>
+                        <li><Link to='/home' onClick={() => logout()}>Logout</Link></li>
                     </ul>
                 </nav>
             </header>
