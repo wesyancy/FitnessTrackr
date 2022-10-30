@@ -241,24 +241,29 @@ export const deleteRoutine = async (token, routineId) => {
     }
     catch (ex) {
         console.log("Error deleting routine")
-    }
-}
-
-//passing in full routineActivity object, use individual parts?
-export const attachActivitytoRoutine = async (routineActivity) => {
-    try {
-        const response = await fetch(`${baseURL}/routines/${routineActivity.routineId}/activities`, {
+      }
+  }
+  //passing in full routineActivity object, use individual parts?
+  export const attachActivitytoRoutine = async(attachedActivity, id) => {
+      try {
+        // console.log(activityId, count, duration, id)
+        console.log(attachedActivity)
+        const response = await fetch(`${baseURL}/routines/${id}/activities`, {
             method: "POST",
             body: JSON.stringify({
-                activityId: routineActivity.activityId,
-                count: routineActivity.count,
-                duration: routineActivity.duration
+                activityId: attachedActivity.activityId,
+                count: attachedActivity.count,
+                duration: attachedActivity.duration
             })
         })
+        // console.log(activityId, count, duration)
         const result = await response.json();
+        // console.log("Hello")
+        console.log(result)
         return result;
-    }
-    catch (ex) {
+      }
+      catch(ex) {
+          console.log(ex)
         console.log("Error attaching to routine")
     }
 }

@@ -27,6 +27,7 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines  }) => {
                             <div id='userRoutines'>
                                 <div id='userRoutine'>
                                     <h3 id='userRoutineName'>{name}</h3>
+                                    <div><Link to={`/routines/${id}/activities`}><button>Attach Activity</button></Link></div>
                                     <div><Link to={`/routines/${id}`}>
                                             <button>Update Routine</button>
                                         </Link></div>
