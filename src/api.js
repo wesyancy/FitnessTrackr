@@ -233,7 +233,7 @@ export const grabData = async (token) => {
   export const attachActivitytoRoutine = async(token, attachedActivity, id) => {
       try {
         // console.log(activityId, count, duration, id)
-        console.log(attachedActivity)
+        // console.log(attachedActivity)
         const response = await fetch(`${baseURL}/routines/${id}/activities`, {
             method: "POST",
             headers: {
@@ -249,7 +249,7 @@ export const grabData = async (token) => {
         // console.log(activityId, count, duration)
         const result = await response.json();
         // console.log("Hello")
-        console.log(result)
+        // console.log(result)
         return result;
       }
       catch(ex) {

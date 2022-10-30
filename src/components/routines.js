@@ -58,7 +58,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                 <ul><strong>Activity:</strong>
                                                 <li>Name:{name}</li>
                                                 <li>Description:{description}</li>
-                                                <li>Duration:{duration}</li>
+                                                <li>Duration:{duration} minutes</li>
                                                 <li>Count:{count}</li>
                                                 </ul>
                                             )
@@ -110,7 +110,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                 <ul><strong>Activity:</strong>
                                                 <li>Name:{name}</li>
                                                 <li>Description:{description}</li>
-                                                <li>Duration:{duration}</li>
+                                                <li>Duration:{duration} minutes</li>
                                                 <li>Count:{count}</li>
                                                 </ul>
                                             )
@@ -157,7 +157,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                 <ul><strong>Activity:</strong>
                                                 <li>Name:{name}</li>
                                                 <li>Description:{description}</li>
-                                                <li>Duration:{duration}</li>
+                                                <li>Duration:{duration} minutes</li>
                                                 <li>Count:{count}</li>
                                                 </ul>
                                             )
@@ -204,7 +204,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                 <ul><strong>Activity:</strong>
                                                 <li>Name:{name}</li>
                                                 <li>Description:{description}</li>
-                                                <li>Duration:{duration}</li>
+                                                <li>Duration:{duration} minutes</li>
                                                 <li>Count:{count}</li>
                                                 </ul>
                                             )

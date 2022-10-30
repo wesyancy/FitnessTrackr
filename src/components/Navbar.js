@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ logout, user }) => {
+const Navbar = ({ logout }) => {
     
     let token = window.localStorage.getItem('token')
     

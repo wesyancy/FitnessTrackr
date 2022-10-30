@@ -40,6 +40,7 @@ const App = () => {
 
   async function fetchRoutines() {
     const results = await getRoutines()
+    // console.log(results)
     setRoutines(results)
   }
 
@@ -75,6 +76,9 @@ const App = () => {
         < Route
           path='/home'
           element={<Home
+          fetchActivities={fetchActivities}
+          fetchRoutines={fetchRoutines}
+          fetchUserRoutines={fetchUserRoutines}
           />}
         />
         <Route
@@ -160,6 +164,7 @@ const App = () => {
             navigate={navigate}
             userRoutines={userRoutines}
             fetchUserRoutines={fetchUserRoutines}
+            fetchRoutines={fetchRoutines}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}

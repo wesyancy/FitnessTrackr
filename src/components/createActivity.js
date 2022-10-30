@@ -24,7 +24,7 @@ const MakeActivity = ({fetchActivities, navigate, actErrorMessage, setActErrorMe
             )
         }
         else {
-            console.log(results)
+            // console.log(results)
             setActErrorMessage(results.message)
         }
     }

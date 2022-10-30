@@ -11,7 +11,7 @@ const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMes
   const currentRoutine = routines.filter(routine => routine.id === routineId);
 
   const {name, goal, isPublic} = currentRoutine;
-  console.log(currentRoutine)
+  // console.log(currentRoutine)
   
   const [newName, setNewName] = useState(name);
   const [newGoal, setNewGoal] = useState(goal);
@@ -26,7 +26,7 @@ const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMes
       id: routineId
     }
     let results = await editRoutine(updatedRoutine)
-    console.log(updatedRoutine)
+    // console.log(updatedRoutine)
     if (results.error) {
       console.log("Error updating Routine")
       setEditRErrorMessage("Error editing routine - Please ensure at least one field is filled out and routine name is not already in use")
@@ -72,7 +72,7 @@ const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMes
         onChange={(event) => setNewisPublic(event.target.checked)}
       />
       </div>
-      <button type='submit' >Edit Routine</button>
+      <button type='submit'onClick={() => { fetchUserRoutines(), fetchRoutines() }} >Edit Routine</button>
     </form>
   )
 }
