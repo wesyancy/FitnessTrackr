@@ -13,9 +13,9 @@ const Register = ({ setToken, navigate, setRegErrorMessage, regErrorMessage }) =
       setToken(results.token);
       window.localStorage.setItem('token', results.token);
       window.localStorage.setItem('username', username);
-      // navigate('/Home');
       console.log(results.message)
       setRegErrorMessage(results.message)
+      navigate('/Home');
     }
     else {
       console.log("Registration Error")

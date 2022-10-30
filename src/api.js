@@ -293,10 +293,10 @@ export const updateRoutineActivity = async (token, routineActivity) => {
     }
 }
 
-export const deleteRoutineActivity = async (token, routineActivity) => {
-    try {
-        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.id}`, {
-            method: "DELETE",
+  export const deleteRoutineActivity = async(token, routineActivityId) => {
+      try{
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
+            method : "DELETE", 
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
