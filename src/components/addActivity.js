@@ -34,10 +34,10 @@ const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines })
       }
       return (
         <form onSubmit={ (event) => {
-            event.preventDefault();  
+            event.preventDefault(); 
+            attachActivity(); 
             fetchRoutines();
             fetchUserRoutines();
-            attachActivity();
             // console.log(attachedActivity)
             // navigate("./myRoutines")
         }}>

@@ -9,7 +9,7 @@ const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMes
   // console.log(posts)
   let token = window.localStorage.getItem('token')
   const currentRoutine = routines.filter(routine => routine.id === routineId);
-  
+
   const {name, goal, isPublic} = currentRoutine;
   console.log(currentRoutine)
   

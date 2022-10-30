@@ -279,9 +279,9 @@ export const grabData = async (token) => {
       }
   }
 
-  export const deleteRoutineActivity = async(token, routineActivity) => {
+  export const deleteRoutineActivity = async(token, routineActivityId) => {
       try{
-        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.id}`, {
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivityId}`, {
             method : "DELETE", 
             headers: {
                 'Content-Type': 'application/json',
