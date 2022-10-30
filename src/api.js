@@ -244,12 +244,16 @@ export const deleteRoutine = async (token, routineId) => {
       }
   }
   //passing in full routineActivity object, use individual parts?
-  export const attachActivitytoRoutine = async(attachedActivity, id) => {
+  export const attachActivitytoRoutine = async(token, attachedActivity, id) => {
       try {
         // console.log(activityId, count, duration, id)
-        console.log(attachedActivity)
+        console.log(attachedActivity.count)
         const response = await fetch(`${baseURL}/routines/${id}/activities`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 activityId: attachedActivity.activityId,
                 count: attachedActivity.count,

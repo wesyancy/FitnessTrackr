@@ -4,20 +4,22 @@ import { attachActivitytoRoutine } from '../api';
 
 
 const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines }) => {
+    
     const [countNumber, setCount] = useState(0)
     const [durationNumber, setDuration] = useState(0)
     const [selectedActivity, setSelectedActivity] = useState(0)
     const { routineId } = useParams();
+    const token = window.localStorage.getItem('token')
     console.log(routineId)
 
     async function attachActivity() {
         const attachedActivity = {
             activityId : selectedActivity,
             count : countNumber,
-            duration : durationNumber,
+            duration : durationNumber
         }
         // console.log(attachedActivity)
-        let results = await attachActivitytoRoutine(attachedActivity, routineId)
+        let results = await attachActivitytoRoutine (token, attachedActivity, routineId)
         console.log(results)
         // console.log(attachedActivity)
         if (results.error) {
