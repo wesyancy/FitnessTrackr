@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine } from './components';
-import { getActivities, getRoutines, getUserRoutines, deleteRoutine } from './api';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine, AddActivity } from './components';
+import { getActivities, getRoutines, getUserRoutines,  } from './api';
 import './style.css'
 
 const App = () => {
@@ -47,7 +47,7 @@ const App = () => {
     let token = window.localStorage.getItem('token')
     let username = window.localStorage.getItem('username')
     const results = await getUserRoutines(token, username)
-    console.log(results)
+    // console.log(results)
     setUserRoutines(results)
   }
 
@@ -171,8 +171,21 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             fetchRoutines={fetchRoutines}
+            fetchUserRoutines={fetchUserRoutines}
             editRErrorMessage={editRErrorMessage}
             setEditRErrorMessage={setEditRErrorMessage}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/routines/:routineId/activities'
+          element={<AddActivity
+            activities={activities}
+            setToken={setToken}
+            navigate={navigate}
+            fetchRoutines={fetchRoutines}
+            fetchUserRoutines={fetchUserRoutines}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}
