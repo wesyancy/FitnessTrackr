@@ -175,7 +175,7 @@ export const getRoutineActivities = async (activity) => {
         return result;
     }
     catch (ex) {
-        console.log("Error obtaining routines for this activity")
+        console.log("Error obtaining activities for this routine")
     }
 }
 

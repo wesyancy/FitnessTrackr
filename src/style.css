@@ -3,6 +3,7 @@
     font-family: 'Oswald', 'Roboto Condensed', Impact, 'Arial Narrow Bold', sans-serif;
     text-align: center;
     text-decoration: none;
+    padding-inline-start: 0px;
 }
 
 body {
@@ -22,7 +23,6 @@ body {
     font-size: 50px;
     margin: auto;
     color: #273e47;
-    /* background-color: white; */
 }
 
 #navlist button {
@@ -51,6 +51,81 @@ button a {
 
 #searchForm button {
     padding: 1%;
+}
+
+#Routines {
+    display: flex;
+    padding: 1rem;
+    border: 2px solid #273e47;
+    margin: 2rem;
+    max-height: 400px;
+    background-color: #d8b06c;
+}
+#Routines * {
+    background-color: #d8b06c;
+    color: #273e47;
+    display: flex;
+}
+
+#Routine {
+    height: 20%;
+    overflow: scroll;
+    flex-wrap: wrap;
+}
+
+#RoutineName {
+    padding: 1%;
+    font-size: x-large;
+    text-align: left;
+    color: #55131f;
+}
+
+#Activities {
+    padding: 1rem;
+    border: 2px solid #273e47;
+    margin: auto;
+    margin-top: 2rem;
+    background-color: #d8973c;
+    flex-direction: column;
+    max-width: fit-content;
+}
+
+#Activities * {
+    background-color: #d8973c;
+    flex-direction: column;
+}
+
+#Activity {
+    flex-direction: column;
+    list-style-type: none;
+}
+
+#ActivityName {
+    color: #273e47;
+
+}
+#template {
+    color: #4d4841;
+}
+
+.RoutineInput {
+    width: 70%;
+    padding: .5rem;
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+    background-color: white;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#createRoutSubmit {
+    padding: 1rem;
+    /* background-color: #55131f; */
+}
+
+#createRoutBack {
+    /* padding: 1rem; */
+    /* background-color: #55131f; */
 }
 
 @media only screen and (max-width: 768px) {

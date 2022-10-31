@@ -54,16 +54,20 @@ const MakeRoutine = ({ fetchRoutines, fetchUserRoutines, navigate, createRErrorM
                         onChange={(event) => routineGoal(event.target.value)}
                     />
                 </div>
+                <br></br>
                 <div>
                     Make Public?
                     <input
-                        className='RoutineInput'
+                        id='publicCheckbox'
                         type='checkbox'
                         onChange={(event) => setIsPublic(event.target.value)}
                     />
                 </div>
-                <button type='submit' onClick={() => {fetchUserRoutines()}}>Submit</button>
-                <Link to='/routines'><button>Back</button></Link>
+                <br></br>
+                <button id='createRoutSubmit' class='createRoutButton' type='submit' onClick={() => {fetchUserRoutines()}}>Submit</button>
+                <br></br>
+                <br></br>
+                <Link to='/routines' id='createRoutBack' class='createRoutButton'><button>Back</button></Link>
             </form>
         )
     }

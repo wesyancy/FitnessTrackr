@@ -49,8 +49,8 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul><strong>Activity:</strong>
-                                                        <li>Name:{name}</li>
+                                                    <ul id='Activity'>
+                                                        <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
                                                         <li>Count:{count}</li>
@@ -101,8 +101,8 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul><strong>Activity:</strong>
-                                                        <li>Name:{name}</li>
+                                                    <ul id='Activity'>
+                                                        <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
                                                         <li>Count:{count}</li>
@@ -148,8 +148,8 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul><strong>Activity:</strong>
-                                                        <li>Name:{name}</li>
+                                                    <ul id='Activity'>
+                                                        <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
                                                         <li>Count:{count}</li>
@@ -195,8 +195,8 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul><strong>Activity:</strong>
-                                                        <li>Name:{name}</li>
+                                                    <ul id='Activity'>
+                                                        <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
                                                         <li>Count:{count}</li>

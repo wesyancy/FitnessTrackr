@@ -40,8 +40,8 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                             <main>
                                 <div id='Activities'>
                                     <div id='Activity' key={id}>
-                                        <h3 id='ActivityName'>{name}</h3>
-                                        <p><strong>Description</strong>{description}</p>
+                                        <h3 id='ActivityName'>Name: {name}</h3>
+                                        <p><strong id='template'>Description: </strong>{description}</p>
                                     </div>
                                 </div>
                             </main>
@@ -71,8 +71,8 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                         <main>
                             <div id='Activities'>
                                 <div id='Activity' key={id}>
-                                    <h3 id='ActivityName'>{name}</h3>
-                                    <p><strong>Description</strong>{description}</p>
+                                    <h3 id='ActivityName'>Name: {name}</h3>
+                                    <p><strong id='template'>Description: </strong>{description}</p>
                                 </div>
                             </div>
                         </main>
@@ -100,8 +100,8 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                         <main>
                             <div id='Activities'>
                                 <div id='Activity' key={id}>
-                                    <h3 id='ActivityName'>{name}</h3>
-                                    <p><strong>Description</strong>{description}</p>
+                                    <h3 id='ActivityName'>Name: {name}</h3>
+                                    <p><strong id='template'>Description: </strong>{description}</p>
                                 </div>
                             </div>
                         </main>
@@ -129,8 +129,8 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                         <main>
                             <div id='Activities'>
                                 <div id='Activity' key={id}>
-                                    <h3 id='ActivityName'>{name}</h3>
-                                    <p><strong>Description</strong>{description}</p>
+                                    <h3 id='ActivityName'>Name: {name}</h3>
+                                    <p><strong id='template'>Description: </strong>{description}</p>
                                 </div>
                             </div>
                         </main>
