@@ -5,6 +5,7 @@ export { default as Home } from './Home';
 export { default as Routines } from './routines';
 export { default as Activities } from './activities';
 export { default as MakeActivity} from './createActivity';
+export { default as EditActivity} from './editActivity';
 export { default as MakeRoutine } from './createRoutine';
 export { default as MyRoutines } from './myRoutines';
 export { default as EditRoutine } from './EditRoutines'

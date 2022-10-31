@@ -1,3 +1,136 @@
 * {
-    background-color: lightblue;
+    background-color: #d8c99b;
+    font-family: 'Oswald', 'Roboto Condensed', Impact, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    padding-inline-start: 0px;
+}
+
+body {
+    color: #8a4545;
+    text-decoration: none;
+}
+
+#navbar {
+    display: flex;
+    padding-top: 10%;
+    flex-direction: column;
+    margin: auto;
+    max-width: 70%;
+}
+
+#navtitle {
+    font-size: 50px;
+    margin: auto;
+    color: #273e47;
+}
+
+#navlist button {
+    background-color: #be776b;
+    padding: 1%;
+}
+
+button a {
+    font-size: x-large;
+    color: #4d4841;
+    background-color: #be776b;
+}
+
+#searchForm * {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#searchbar {
+    width: 70%;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background-color: white;
+    border: 1px solid black;
+}
+
+#searchForm button {
+    padding: 1%;
+}
+
+#Routines {
+    display: flex;
+    padding: 1rem;
+    border: 2px solid #273e47;
+    margin: 2rem;
+    max-height: 400px;
+    background-color: #d8b06c;
+}
+#Routines * {
+    background-color: #d8b06c;
+    color: #273e47;
+    display: flex;
+}
+
+#Routine {
+    height: 20%;
+    overflow: scroll;
+    flex-wrap: wrap;
+}
+
+#RoutineName {
+    padding: 1%;
+    font-size: x-large;
+    text-align: left;
+    color: #55131f;
+}
+
+#Activities {
+    padding: 1rem;
+    border: 2px solid #273e47;
+    margin: auto;
+    margin-top: 2rem;
+    background-color: #d8973c;
+    flex-direction: column;
+    max-width: fit-content;
+}
+
+#Activities * {
+    background-color: #d8973c;
+    flex-direction: column;
+}
+
+#Activity {
+    flex-direction: column;
+    list-style-type: none;
+}
+
+#ActivityName {
+    color: #273e47;
+
+}
+#template {
+    color: #4d4841;
+}
+
+.RoutineInput {
+    width: 70%;
+    padding: .5rem;
+    /* margin-top: 10px; */
+    /* margin-bottom: 10px; */
+    background-color: white;
+    margin: auto;
+    margin-top: 10px;
+}
+
+#createRoutSubmit {
+    padding: 1rem;
+    /* background-color: #55131f; */
+}
+
+@media only screen and (max-width: 768px) {
+    #navtitle {
+        font-size: 35px;
+    }
+
+    #navlist button {
+        background-color: #be776b;
+        padding: 5%;
+        margin: 1%;
+    }
 }

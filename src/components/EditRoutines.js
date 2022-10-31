@@ -5,8 +5,7 @@ import { editRoutine } from '../api';
 
 const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMessage, setEditRErrorMessage, navigate }) => {
   const { routineId } = useParams();
-  // console.log(postID)
-  // console.log(posts)
+  
   let token = window.localStorage.getItem('token')
   const currentRoutine = routines.filter(routine => routine.id === routineId);
 

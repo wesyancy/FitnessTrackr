@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
 const Routines = ({ routines, navigate, fetchRoutines }) => {
-    
+
     const token = window.localStorage.getItem('token')
     const [searchTerm, setSearchTerm] = useState('');
     let delivery = ''
@@ -23,34 +23,29 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
         return (
             <Fragment>
                 <span id='routineHead'>
-                    <form className='top' onSubmit={(event) => {
+                    <form id='searchForm' onSubmit={(event) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
                         />
-                        {
-                            <Link to='/createRoutine'>
-                                <button id='createRoutineButton'>
-                                    Create Routine
-                                </button>
-                            </Link>
-                        }
+                        {<Link to='/createRoutine'><button id='createRoutineButton'>Create Routine</button></Link>}
                     </form>
                 </span>
                 {
                     routinesToDisplay.map((routine) => {
-                        const { name, goal, id, creatorName, activities} = routine
+                        const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine'>
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
+<<<<<<< HEAD
                                         <p>{
                                         activities.map((activity) => {
                                             const { name, description, duration, count } = activity
@@ -64,6 +59,21 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             )
                                         })  
                                         }</p>
+=======
+                                        <div>{
+                                            activities.map((activity) => {
+                                                const { name, description, duration, count } = activity
+                                                return (
+                                                    <ul id='Activity' key={name}>
+                                                        <li>Activity: {name}</li>
+                                                        <li>Description:{description}</li>
+                                                        <li>Duration:{duration}</li>
+                                                        <li>Count:{count}</li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }</div>
+>>>>>>> 88e3ebdb561b7cc94ada5077a9df8f515d5d6f20
                                     </div>
                                 </div>
                             </main>
@@ -77,11 +87,11 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
         return (
             <Fragment>
                 <span id='routineHead'>
-                    <form className='top' onSubmit={(event) => {
+                    <form id='searchForm' onSubmit={(event) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
@@ -95,14 +105,15 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                 </span>
                 {
                     routines.map((routine) => {
-                        const { name, goal, id, creatorName, activities} = routine
+                        const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine'>
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
+<<<<<<< HEAD
                                         <p>{
                                         activities.map((activity) => {
                                             const { name, description, duration, count } = activity
@@ -116,6 +127,21 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             )
                                         })  
                                         }</p>
+=======
+                                        <div>{
+                                            activities.map((activity) => {
+                                                const { name, description, duration, count } = activity
+                                                return (
+                                                    <ul id='Activity' key={name}>
+                                                        <li>Activity: {name}</li>
+                                                        <li>Description:{description}</li>
+                                                        <li>Duration:{duration}</li>
+                                                        <li>Count:{count}</li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }</div>
+>>>>>>> 88e3ebdb561b7cc94ada5077a9df8f515d5d6f20
                                     </div>
                                 </div>
                             </main>
@@ -129,11 +155,11 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
         return (
             <Fragment>
                 <span id='routineHead'>
-                    <form className='top' onSubmit={(event) => {
+                    <form id='searchForm' onSubmit={(event) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
@@ -142,14 +168,15 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                 </span>
                 {
                     routinesToDisplay.map((routine) => {
-                        const { name, goal, id, creatorName, activities} = routine
+                        const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine' >
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
+<<<<<<< HEAD
                                         <p>{
                                         activities.map((activity) => {
                                             const { name, description, duration, count } = activity
@@ -163,6 +190,21 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             )
                                         })  
                                         }</p>
+=======
+                                        <div>{
+                                            activities.map((activity) => {
+                                                const { name, description, duration, count } = activity
+                                                return (
+                                                    <ul id='Activity' key={name}>
+                                                        <li>Activity: {name}</li>
+                                                        <li>Description:{description}</li>
+                                                        <li>Duration:{duration}</li>
+                                                        <li>Count:{count}</li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }</div>
+>>>>>>> 88e3ebdb561b7cc94ada5077a9df8f515d5d6f20
                                     </div>
                                 </div>
                             </main>
@@ -176,11 +218,11 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
         return (
             <Fragment>
                 <span id='routineHead'>
-                    <form className='top' onSubmit={(event) => {
+                    <form id='searchForm' onSubmit={(event) => {
                         event.preventDefault()
                     }}>
                         <input
-                            className="searchbar"
+                            id="searchbar"
                             type='text'
                             placeholder="Search"
                             onChange={(event) => setSearchTerm(event.target.value)}
@@ -191,12 +233,13 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                     routinesToDisplay.map((routine) => {
                         const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine' >
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
+<<<<<<< HEAD
                                         <p>{
                                         activities.map((activity) => {
                                             const { name, description, duration, count } = activity
@@ -210,6 +253,21 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                             )
                                         })  
                                         }</p>
+=======
+                                        <div>{
+                                            activities.map((activity) => {
+                                                const { name, description, duration, count } = activity
+                                                return (
+                                                    <ul id='Activity' key={name}>
+                                                        <li>Activity: {name}</li>
+                                                        <li>Description:{description}</li>
+                                                        <li>Duration:{duration}</li>
+                                                        <li>Count:{count}</li>
+                                                    </ul>
+                                                )
+                                            })
+                                        }</div>
+>>>>>>> 88e3ebdb561b7cc94ada5077a9df8f515d5d6f20
                                     </div>
                                 </div>
                             </main>

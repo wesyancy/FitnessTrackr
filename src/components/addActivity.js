@@ -4,10 +4,11 @@ import { attachActivitytoRoutine } from '../api';
 
 
 const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines }) => {
+    
     const [countNumber, setCount] = useState(0)
     const [durationNumber, setDuration] = useState(0)
     const [selectedActivity, setSelectedActivity] = useState(0)
-    const [ attachActivityError, setAttachActivityError] = useState('')
+    const [attachActivityError, setAttachActivityError] = useState('')
     const { routineId } = useParams();
     const token = window.localStorage.getItem('token');
     // console.log(routineId)
@@ -16,21 +17,19 @@ const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines })
         const attachedActivity = {
             activityId : selectedActivity,
             count : countNumber,
-            duration : durationNumber,
+            duration : durationNumber
         }
         // console.log(attachedActivity)
         let results = await attachActivitytoRoutine(token, attachedActivity, routineId)
         console.log(results)
         // console.log(attachedActivity)
-        if (results.name == "RoutineActivityExistsError") {
+        if (results.name == 'RoutineActivityExistsError') {
           console.log("Error attaching activity")
           setAttachActivityError("You've already attached that activity!")
+        } else if (results.error) {
+            setAttachActivityError ("Error attaching activity")
         }
-        else if(results.error){
-            setAttachActivityError("Error attaching activity")
-        }
-        else{
-        //   setAttachActivityError('')
+        else {
           navigate('./myRoutines')
         //   setEditRErrorMessage('')
         }
@@ -54,18 +53,14 @@ const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines })
                 {activities.map((activity) => {
                     const { name, description, id } = activity
                     return (
-
-
-                        
                         <option value={id}>{name}</option>
-
                     )
                 })}
             </select>
             <input type="number" min="1" placeholder="Count" onChange={(event) => setCount(Number(event.target.value))}></input>
-            {/* {console.log(countNumber)} */}
+            
             <input type="number" min="1" placeholder="Duration" onChange={(event) => setDuration(Number(event.target.value))}></input>
-            {/* {console.log(selectedActivity, countNumber, durationNumber,)} */}
+            
             <button type="submit" onClick={() => {fetchRoutines(), fetchUserRoutines()}}>Submit</button>
         </form>
     )

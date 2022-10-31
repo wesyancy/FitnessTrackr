@@ -2,7 +2,7 @@
 const baseURL = 'https://fitnesstrac-kr.herokuapp.com/api'
 
 export const getActivities = async () => {
-    try{
+    try {
         const response = await fetch(`${baseURL}/activities`, {
             headers: {
                 'Content-Type': 'application/json'
@@ -32,7 +32,7 @@ export const registerUser = async (username, password) => {
         const result = await response.json();
         return result;
     }
-    catch (ex){
+    catch (ex) {
         console.log('Error registering user')
     }
 }
@@ -59,20 +59,20 @@ export const loginUser = async (username, password) => {
 }
 
 export const grabData = async (token) => {
-    try{
-      const response = await fetch(`${baseURL}/users/me`, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      const result = await response.json();
-      return result;
+    try {
+        const response = await fetch(`${baseURL}/users/me`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+        })
+        const result = await response.json();
+        return result;
     }
-    catch(ex){
-      console.log("Error getting user data")
+    catch (ex) {
+        console.log("Error getting user data")
     }
-  }
+}
 
   //should we incorporate tokens for private routines? See API documentation.
   export const getRoutines = async () => {
@@ -80,15 +80,27 @@ export const grabData = async (token) => {
         const response = await fetch(`${baseURL}/routines`, {
             headers: {
                 'Content-Type': 'application/json',
-            },            
+            },
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
-          console.log("Error getting routines")
-      }
-  }
+    }
+    catch (ex) {
+        console.log("Error getting routines")
+    }
+    //   try{
+    //     const response = await fetch(`${baseURL}/users/${username}/routines`, {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },            
+    //     })
+    //     const result = await response.json();
+    //     return result;
+    //   }
+    //   catch(ex){
+    //       console.log("Error getting routines")
+    //   }
+}
 
   export const getUserRoutines = async (token, username) => {
       try{
@@ -123,15 +135,15 @@ export const grabData = async (token) => {
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
-          console.log("Error creating activity")
-      }
-  }
+    }
+    catch (ex) {
+        console.log("Error creating activity")
+    }
+}
 
-    //Should this take a token? API says anyone should be able to update, but requires user to be logged in.
-  export const editActivity = async(activity, token) => {
-      try {
+// Should this take a token? API says anyone should be able to update, but requires user to be logged in.
+export const editActivity = async (activity, token) => {
+    try {
         const response = await fetch(`${baseURL}/activities/${activity.id}`, {
             method: "PATCH",
             headers: {
@@ -146,29 +158,30 @@ export const grabData = async (token) => {
         const result = await response.json();
         console.log("Post Successfully Edited!")
         return result;
-      }
-      catch(ex) {
+    }
+    catch (ex) {
         console.log("Error editing activity")
-      }
-  }
+    }
+}
 
-  export const getRoutineActivities = async(activity) => {
-      try {
-        const response = await fetch(`${baseURL}/activities/${activity.id}`, {
+export const getRoutineActivities = async (routine) => {
+    try {
+        const response = await fetch(`${baseURL}/activities/${routine.id}`, {
             headers: {
                 'Content-Type': 'application/json',
             },
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
-        console.log("Error obtaining routines for this activity")
-      }
-  }
-  // should name, goal, is Public be in an object? Do we need headers section?
-  export const createRoutine = async(token, {name, goal, isPublic}) => {
-      try {
+    }
+    catch (ex) {
+        console.log("Error obtaining activities for this routine")
+    }
+}
+
+// should name, goal, is Public be in an object? Do we need headers section?
+export const createRoutine = async (token, { name, goal, isPublic }) => {
+    try {
         const response = await fetch(`${baseURL}/routines`, {
             method: "POST",
             headers: {
@@ -183,11 +196,12 @@ export const grabData = async (token) => {
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
+    }
+    catch (ex) {
         console.log("Error creating routine")
-      }
-  }
+    }
+}
+
 // token?
   export const editRoutine = async({token, name, goal, isPublic, id}) => {
       try {
@@ -213,8 +227,8 @@ export const grabData = async (token) => {
       }
   }
 
-  export const deleteRoutine = async(token, routineId) => {
-      try {
+export const deleteRoutine = async (token, routineId) => {
+    try {
         const response = await fetch(`${baseURL}/routines/${routineId}`, {
             method: "DELETE",
             headers: {
@@ -224,8 +238,8 @@ export const grabData = async (token) => {
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex) {
+    }
+    catch (ex) {
         console.log("Error deleting routine")
       }
   }
@@ -233,7 +247,7 @@ export const grabData = async (token) => {
   export const attachActivitytoRoutine = async(token, attachedActivity, id) => {
       try {
         // console.log(activityId, count, duration, id)
-        // console.log(attachedActivity)
+        console.log(attachedActivity.count)
         const response = await fetch(`${baseURL}/routines/${id}/activities`, {
             method: "POST",
             headers: {
@@ -255,12 +269,12 @@ export const grabData = async (token) => {
       catch(ex) {
           console.log(ex)
         console.log("Error attaching to routine")
-      }
-  }
+    }
+}
 
-  export const updateRoutineActivity = async(token, routineActivity) => {
-      try{
-        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.id}`, {
+export const updateRoutineActivity = async (token, routineActivity) => {
+    try {
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.routineActivityId}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
@@ -274,12 +288,11 @@ export const grabData = async (token) => {
         const result = await response.json();
         console.log(routineActivity)
         return result;
-      }
-      catch(ex){
-          console.log(routineActivity)
-          console.log("Error updating routine activity")
-      }
-  }
+    }
+    catch (ex) {
+        console.log("Error updating routine activity")
+    }
+}
 
   export const deleteRoutineActivity = async(token, routineActivityId) => {
       try{
@@ -292,8 +305,8 @@ export const grabData = async (token) => {
         })
         const result = await response.json();
         return result;
-      }
-      catch(ex){
-          console.log("Error deleting routine activity")
-      }
-  }
+    }
+    catch (ex) {
+        console.log("Error deleting routine activity")
+    }
+}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine, AddActivity, EditActivity } from './components';
-import { getActivities, getRoutines, getUserRoutines, } from './api';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, EditActivity, MakeRoutine, MyRoutines, EditRoutine, AddActivity } from './components';
+import { getActivities, getRoutines, getUserRoutines,  } from './api';
 import './style.css'
 
 const App = () => {
@@ -69,8 +69,7 @@ const App = () => {
   // }, [])
 
   return (
-    <div id="navbar">
-      <h1>Fitness Trackr</h1>
+    <div id="routes">
       <Navbar logout={logout} token={token} user={user} />
       <Routes>
         < Route
@@ -128,6 +127,18 @@ const App = () => {
             fetchActivities={fetchActivities}
             actErrorMessage={actErrorMessage}
             setActErrorMessage={setActErrorMessage}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/editActivity'
+          element={<EditActivity
+            activities={activities}
+            setToken={setToken}
+            navigate={navigate}
+            userRoutines={userRoutines}
+            fetchUserRoutines={fetchUserRoutines}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
           />}

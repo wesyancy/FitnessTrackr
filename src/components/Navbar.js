@@ -1,24 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Navbar = ({ logout }) => {
-    
+const Navbar = ({ logout, user }) => {
+
     let token = window.localStorage.getItem('token')
-    
+
     if (!token) {
         return (
             <header>
-                <nav className='nav-bar'>
-                    <div id='navtitle'>
-                        Fitness Trackr
-                    </div>
-                    <ul className='navlist'>
-                        <Link to='/home'>Home</Link>
-                        <Link to='/routines'>Routines</Link>
-                        {/* <Link to='/myRoutines'>My Routines</Link> */}
-                        <Link to='/activities'>Activities</Link>
-                        <Link to='/register'>Register</Link>
-                        <Link to='/login'>Login</Link>
+                <nav id='navbar'>
+                    <div id='navtitle'>Fitness Trackr</div>
+                    <ul id='navlist'>
+                        <button><Link to='/home'>Home</Link></button>
+                        <button><Link to='/routines'>Routines</Link></button>
+                        <button><Link to='/activities'>Activities</Link></button>
+                        <button><Link to='/editActivity'>Edit Activity</Link></button>
+                        <button><Link to='/register'>Register</Link></button>
+                        <button><Link to='/login'>Login</Link></button>
                     </ul>
                 </nav>
             </header>
@@ -26,15 +24,15 @@ const Navbar = ({ logout }) => {
     } else {
         return (
             <header>
-                <nav className='nav-bar'>
+                <nav id='navbar'>
                     <div id='navtitle'>Fitness Trackr</div>
-                    <ul className='navlist'>
-                        <Link className='anchor' to='/home'>Home</Link>
-                        <Link className='anchor' to='/routines'>Routines</Link>
-                        <Link className='anchor' to='/myRoutines'>My Routines</Link>
-                        <Link className='anchor' to='/activities'>Activities</Link>
-                        <Link to='/home' onClick={() => logout()
-                        }>Logout</Link>
+                    <ul id='navlist'>
+                        <button><Link className='anchor' to='/home'>Home</Link></button>
+                        <button><Link className='anchor' to='/routines'>Routines</Link></button>
+                        <button><Link className='anchor' to='/myRoutines'>My Routines</Link></button>
+                        <button><Link className='anchor' to='/activities'>Activities</Link></button>
+                        <button><Link to='/editActivity'>Edit Activity</Link></button>
+                        <button><Link to='/home' onClick={() => logout()}>Logout</Link></button>
                     </ul>
                 </nav>
             </header>
