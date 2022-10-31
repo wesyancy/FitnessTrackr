@@ -9,8 +9,8 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
     const token = window.localStorage.getItem('token')
 
     return (
+        
         <div>
-
             <Link to='/createRoutine'>
                 <button id='createRoutineButton'>Create Routine</button>
             </Link>
@@ -43,8 +43,6 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                                         activities.map((activity) => {
 
                                             const { name, description, duration, count, routineActivityId, id, routineId } = activity
-                                            const [newCount, setNewCount] = useState(count);
-                                            const [newDuration, setNewDuration] = useState(duration);
 
                                             const editObject = {}
 
@@ -76,13 +74,11 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                                             }
 
                                             return (
-
                                                 <ul key={routineActivityId}><strong>Activity:</strong>
-
                                                     <li>Name: {name}</li>
                                                     <li>Description: {description}</li>
                                                     <li>Duration: {duration} minutes</li>
-
+                                                    <li>Count: {count}</li>
                                                     <Link to='/editActivity'>
                                                         <button
                                                             id='createRoutineButton'
@@ -90,15 +86,6 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                                                             Edit Activity
                                                         </button>
                                                     </Link>
-
-                                                    <input type="number" min="1" placeholder={duration} onChange={(event) => setNewDuration(Number(event.target.value))}></input>
-
-                                                    <li>Count: {count}</li>
-                                                    <input type="number" min="1" placeholder={count} onChange={(event) => setNewCount(Number(event.target.value))}></input>
-                                                    <br></br>
-
-                                                    {/* <button onClick={() => { updateMyActivity() }}>Update Duration and Count</button><br></br>
-                                                    <button onClick={() => { deleteRoutineActivity(token, routineActivityId), fetchUserRoutines() }}> Delete Activity </button> */}
                                                 </ul>
                                             )
                                         })

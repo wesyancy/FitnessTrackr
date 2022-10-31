@@ -8,13 +8,7 @@ const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines })
     const token = window.localStorage.getItem('token')
     const activity = window.localStorage.getItem('activity')
 
-    console.log(activity)
-
     const currentActivity = JSON.parse(activity)
-
-    console.log (currentActivity)
-
-    // console.log (currentActivity)
 
     const { name, description, duration, count, routineActivityId } = currentActivity
     const [newCount, setNewCount] = useState(count);
