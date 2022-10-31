@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Route, BrowserRouter, Routes, useNavigate } from 'react-router-dom';
-import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine, AddActivity } from './components';
-import { getActivities, getRoutines, getUserRoutines,  } from './api';
+import { Register, Login, Home, Navbar, Activities, Routines, MakeActivity, MakeRoutine, MyRoutines, EditRoutine, AddActivity, EditActivity } from './components';
+import { getActivities, getRoutines, getUserRoutines, } from './api';
 import './style.css'
 
 const App = () => {
@@ -76,9 +76,9 @@ const App = () => {
         < Route
           path='/home'
           element={<Home
-          fetchActivities={fetchActivities}
-          fetchRoutines={fetchRoutines}
-          fetchUserRoutines={fetchUserRoutines}
+            fetchActivities={fetchActivities}
+            fetchRoutines={fetchRoutines}
+            fetchUserRoutines={fetchUserRoutines}
           />}
         />
         <Route
@@ -190,6 +190,18 @@ const App = () => {
             setToken={setToken}
             navigate={navigate}
             fetchRoutines={fetchRoutines}
+            fetchUserRoutines={fetchUserRoutines}
+          // isLoggedIn={isLoggedIn}
+          // setIsLoggedIn={setIsLoggedIn}
+          />}
+        />
+        <Route
+          path='/routine_activities/:routineActivityId'
+          element={<EditActivity
+            activities={userRoutines}
+            setToken={setToken}
+            navigate={navigate}
+            userRoutines={userRoutines}
             fetchUserRoutines={fetchUserRoutines}
           // isLoggedIn={isLoggedIn}
           // setIsLoggedIn={setIsLoggedIn}
