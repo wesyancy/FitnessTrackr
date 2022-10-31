@@ -13,6 +13,7 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines, fetchRoutines }
     const [routActId, setRoutActId ] = useState('');
 
     async function updateMyCount() {
+        console.log(routActId)
         const updatedActivity = {
             count: newCount,
             id: routActId
@@ -141,13 +142,16 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines, fetchRoutines }
                                                         <li>Name:{name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration} minutes</li>
+
+                                                        <Link to={`/routine_activities/${routineActivityId}`}><button id='createRoutineButton'>Edit Activity</button></Link>
+
                                                         <input type="number" min="1" placeholder={duration} onChange={(event) => setNewDuration(Number(event.target.value))}></input>
-                                                        <button onClick={() => {setRoutActId(routineActivityId), updateMyDuration(), fetchRoutines() }}>Update Duration</button><br></br>
+                                                        <button onClick={() => {updateMyDuration(), setRoutActId(routineActivityId), fetchUserRoutines(), fetchRoutines() }}>Update Duration</button><br></br>
                                                         {console.log(routActId)}
                                                         <li>Count:{count}</li>
                                                         <input type="number" min="1" placeholder={count} onChange={(event) => {setNewCount(Number(event.target.value))}}></input><br></br>
                                                         {/* {console.log(newCount)} */}
-                                                        <button onClick={() => {setRoutActId(routineActivityId), updateMyCount(), fetchRoutines() }}>Update Count</button><br></br>
+                                                        <button onClick={() => {updateMyCount(), setRoutActId(routineActivityId), fetchUserRoutines(), fetchRoutines() }}>Update Count</button><br></br>
                                                         <button onClick={() => { deleteRoutineActivity(token, routineActivityId), fetchUserRoutines()}}> Delete Activity </button>
                                                     </ul>
                                                 )

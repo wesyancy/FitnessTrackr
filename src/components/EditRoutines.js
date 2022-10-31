@@ -11,7 +11,7 @@ const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMes
   const currentRoutine = routines.filter(routine => routine.id === routineId);
 
   const {name, goal, isPublic} = currentRoutine;
-  // console.log(currentRoutine)
+  console.log(currentRoutine)
   
   const [newName, setNewName] = useState(name);
   const [newGoal, setNewGoal] = useState(goal);

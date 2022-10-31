@@ -272,9 +272,11 @@ export const grabData = async (token) => {
             })
         })
         const result = await response.json();
+        console.log(routineActivity)
         return result;
       }
       catch(ex){
+          console.log(routineActivity)
           console.log("Error updating routine activity")
       }
   }

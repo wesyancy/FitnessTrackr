@@ -66,7 +66,7 @@ const AddActivity = ({ activities, navigate, fetchRoutines, fetchUserRoutines })
             {/* {console.log(countNumber)} */}
             <input type="number" min="1" placeholder="Duration" onChange={(event) => setDuration(Number(event.target.value))}></input>
             {/* {console.log(selectedActivity, countNumber, durationNumber,)} */}
-            <button type="submit" onClick={(event) => {fetchRoutines(), fetchUserRoutines()}}>Submit</button>
+            <button type="submit" onClick={() => {fetchRoutines(), fetchUserRoutines()}}>Submit</button>
         </form>
     )
 }
