@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
-import { deleteRoutine } from '../api';
+import { deleteRoutine, getActivities } from '../api';
 import { updateRoutineActivity, deleteRoutineActivity, getRoutineActivities } from '../api';
 
 const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines }) => {
@@ -8,18 +8,11 @@ const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines })
     const token = window.localStorage.getItem('token')
     const activity = window.localStorage.getItem('activity')
 
-    const currentActivity = activities.filter(thisActivity => thisActivity.id === activity)
+    console.log(activity)
 
-    console.log (currentActivity)
+    const currentActivity = JSON.parse(activity)
 
-    // const editActivity = {}
-    // editActivity.id = activity
-    
-    // console.log (editActivity)
-    // console.log (activity)
-    
-    // const currentActivity = getRoutineActivities(activity);
-    // const currentActivity2 = getRoutineActivities(editActivity);
+    // console.log (currentActivity)
 
     const { name, description, duration, count, routineActivityId } = currentActivity
     const [newCount, setNewCount] = useState(count);
@@ -53,9 +46,9 @@ const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines })
 
         <ul><strong>Activity:</strong>
 
-            <li>Name:{name}</li>
-            <li>Description:{description}</li>
-            <li>Duration:{duration} minutes</li>
+            <li>Name: {name}</li>
+            <li>Description: {description}</li>
+            <li>Duration: {duration} minutes</li>
 
             <input type="number" min="1" placeholder={duration} onChange={(event) => setNewDuration(Number(event.target.value))}></input>
 

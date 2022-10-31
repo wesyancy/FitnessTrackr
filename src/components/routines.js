@@ -39,17 +39,17 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                     routinesToDisplay.map((routine) => {
                         const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine'>
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
-                                        <p>{
+                                        <div>{
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul id='Activity'>
+                                                    <ul id='Activity' key={name}>
                                                         <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
@@ -57,7 +57,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                     </ul>
                                                 )
                                             })
-                                        }</p>
+                                        }</div>
                                     </div>
                                 </div>
                             </main>
@@ -91,17 +91,17 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                     routines.map((routine) => {
                         const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine'>
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
-                                        <p>{
+                                        <div>{
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul id='Activity'>
+                                                    <ul id='Activity' key={name}>
                                                         <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
@@ -109,7 +109,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                     </ul>
                                                 )
                                             })
-                                        }</p>
+                                        }</div>
                                     </div>
                                 </div>
                             </main>
@@ -138,17 +138,17 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                     routinesToDisplay.map((routine) => {
                         const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine' >
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
-                                        <p>{
+                                        <div>{
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul id='Activity'>
+                                                    <ul id='Activity' key={name}>
                                                         <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
@@ -156,7 +156,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                     </ul>
                                                 )
                                             })
-                                        }</p>
+                                        }</div>
                                     </div>
                                 </div>
                             </main>
@@ -185,17 +185,17 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                     routinesToDisplay.map((routine) => {
                         const { name, goal, id, creatorName, activities } = routine
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Routines'>
-                                    <div id='Routine' key={id}>
+                                    <div id='Routine' >
                                         <h3 id='RoutineName'>{name}</h3>
                                         <p><strong>Creator:</strong>{creatorName}</p>
                                         <p><strong>Goal:</strong>{goal}</p>
-                                        <p>{
+                                        <div>{
                                             activities.map((activity) => {
                                                 const { name, description, duration, count } = activity
                                                 return (
-                                                    <ul id='Activity'>
+                                                    <ul id='Activity' key={name}>
                                                         <li>Activity: {name}</li>
                                                         <li>Description:{description}</li>
                                                         <li>Duration:{duration}</li>
@@ -203,7 +203,7 @@ const Routines = ({ routines, navigate, fetchRoutines }) => {
                                                     </ul>
                                                 )
                                             })
-                                        }</p>
+                                        }</div>
                                     </div>
                                 </div>
                             </main>

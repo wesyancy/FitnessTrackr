@@ -164,9 +164,9 @@ export const editActivity = async (activity, token) => {
     }
 }
 
-export const getRoutineActivities = async (activity) => {
+export const getRoutineActivities = async (routine) => {
     try {
-        const response = await fetch(`${baseURL}/activities/${activity.id}`, {
+        const response = await fetch(`${baseURL}/activities/${routine.id}`, {
             headers: {
                 'Content-Type': 'application/json',
             },

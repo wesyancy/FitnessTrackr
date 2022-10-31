@@ -123,11 +123,6 @@ button a {
     /* background-color: #55131f; */
 }
 
-#createRoutBack {
-    /* padding: 1rem; */
-    /* background-color: #55131f; */
-}
-
 @media only screen and (max-width: 768px) {
     #navtitle {
         font-size: 35px;

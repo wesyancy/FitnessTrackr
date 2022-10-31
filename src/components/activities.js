@@ -37,9 +37,9 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                     activitiesToDisplay.map((activity) => {
                         const { name, description, id } = activity
                         return (
-                            <main>
+                            <main key={id}>
                                 <div id='Activities'>
-                                    <div id='Activity' key={id}>
+                                    <div id='Activity'>
                                         <h3 id='ActivityName'>Name: {name}</h3>
                                         <p><strong id='template'>Description: </strong>{description}</p>
                                     </div>
@@ -68,9 +68,9 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                 {activities.map((activity) => {
                     const { name, description, id } = activity
                     return (
-                        <main>
+                        <main key={id}>
                             <div id='Activities'>
-                                <div id='Activity' key={id}>
+                                <div id='Activity'>
                                     <h3 id='ActivityName'>Name: {name}</h3>
                                     <p><strong id='template'>Description: </strong>{description}</p>
                                 </div>
@@ -97,7 +97,7 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                 {activitiesToDisplay.map((activity) => {
                     const { name, description, id } = activity
                     return (
-                        <main>
+                        <main key={id}>
                             <div id='Activities'>
                                 <div id='Activity' key={id}>
                                     <h3 id='ActivityName'>Name: {name}</h3>
@@ -126,7 +126,7 @@ const Activities = ({ activities, navigate, fetchActivities }) => {
                 {activitiesToDisplay.map((activity) => {
                     const { name, description, id } = activity
                     return (
-                        <main>
+                        <main key={id}>
                             <div id='Activities'>
                                 <div id='Activity' key={id}>
                                     <h3 id='ActivityName'>Name: {name}</h3>
