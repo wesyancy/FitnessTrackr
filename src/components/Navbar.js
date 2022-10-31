@@ -14,7 +14,6 @@ const Navbar = ({ logout, user }) => {
                         <button><Link to='/home'>Home</Link></button>
                         <button><Link to='/routines'>Routines</Link></button>
                         <button><Link to='/activities'>Activities</Link></button>
-                        <button><Link to='/editActivity'>Edit Activity</Link></button>
                         <button><Link to='/register'>Register</Link></button>
                         <button><Link to='/login'>Login</Link></button>
                     </ul>
@@ -31,7 +30,6 @@ const Navbar = ({ logout, user }) => {
                         <button><Link className='anchor' to='/routines'>Routines</Link></button>
                         <button><Link className='anchor' to='/myRoutines'>My Routines</Link></button>
                         <button><Link className='anchor' to='/activities'>Activities</Link></button>
-                        <button><Link to='/editActivity'>Edit Activity</Link></button>
                         <button><Link to='/home' onClick={() => logout()}>Logout</Link></button>
                     </ul>
                 </nav>
