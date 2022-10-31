@@ -23,17 +23,18 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                 return (
 
                     <main key={id}>
-                        <div id='userRoutines'>
-                            <div id='userRoutine'>
+                        <div id='Routines'>
+                            <div id='Routine'>                                
+                                <h3 id='RoutineName'>Name: {name}</h3>
                                 
-                                <h3 id='userRoutineName'>{name}</h3>
-
-                                <div><Link to={`/routines/${id}/activities`}><button>Attach Activity</button></Link></div>
-                                <div><Link to={`/routines/${id}`}><button>Update Routine</button></Link></div>
-                                <button onClick={() => { deleteRoutine(token, id), fetchUserRoutines() }}>Delete Routine</button>
+                                <div ><Link to={`/routines/${id}/activities`}><button class="myRoutineButtons">Attach Activity</button></Link></div>
+                                <div><Link to={`/routines/${id}`}><button class="myRoutineButtons">Update Routine</button></Link></div>
+                                <button class="myRoutineButtons" onClick={() => { deleteRoutine(token, id), fetchUserRoutines() }}>Delete Routine</button>
+                                
                                 <p><strong>Creator:</strong>{creatorName}</p>
                                 <p><strong>Goal:</strong>{goal}</p>
                                 <p><strong>Public:</strong>{JSON.stringify(isPublic)}</p>
+                                
                                 <form onSubmit={(event) => {
                                     event.preventDefault();
                                     attachActivity();
@@ -74,7 +75,7 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                                             }
 
                                             return (
-                                                <ul key={routineActivityId}><strong>Activity:</strong>
+                                                <ul key={routineActivityId} id="Activities"><strong>Activity:</strong>
                                                     <li>Name: {name}</li>
                                                     <li>Description: {description}</li>
                                                     <li>Duration: {duration} minutes</li>

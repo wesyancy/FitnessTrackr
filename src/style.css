@@ -111,16 +111,19 @@ button a {
 .RoutineInput {
     width: 70%;
     padding: .5rem;
-    /* margin-top: 10px; */
-    /* margin-bottom: 10px; */
     background-color: white;
     margin: auto;
     margin-top: 10px;
 }
 
+.myRoutineButtons {
+    background-color: #273e47;
+    max-height: fit-content;
+    max-width: fit-content;
+}
+
 #createRoutSubmit {
     padding: 1rem;
-    /* background-color: #55131f; */
 }
 
 @media only screen and (max-width: 768px) {
