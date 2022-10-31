@@ -12,6 +12,8 @@ const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines })
 
     const currentActivity = JSON.parse(activity)
 
+    console.log (currentActivity)
+
     // console.log (currentActivity)
 
     const { name, description, duration, count, routineActivityId } = currentActivity
@@ -20,21 +22,15 @@ const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines })
 
     async function updateMyActivity() {
 
-        const updatedActivity = {
-            count: newCount,
-            duration: newDuration,
-            id: routineActivityId
-        }
+        currentActivity.count = newCount
+        currentActivity.duration = newDuration
 
-        console.log(updatedActivity)
-
-        let results = await updateRoutineActivity(token, updatedActivity)
+        let results = await updateRoutineActivity(token, currentActivity)
 
         console.log(results)
 
         if (results.error) {
             console.log("Error updating activity")
-
         }
 
         else {
@@ -43,27 +39,25 @@ const editActivity = ({ activities, navigate, userRoutines, fetchUserRoutines })
     }
 
     return (
-
-        <ul><strong>Activity:</strong>
+        <ul>
+            <strong>Activity:</strong>
+            <br></br>
+            <br></br>
 
             <li>Name: {name}</li>
             <li>Description: {description}</li>
+            <br></br>
+
             <li>Duration: {duration} minutes</li>
-
             <input type="number" min="1" placeholder={duration} onChange={(event) => setNewDuration(Number(event.target.value))}></input>
-
-            {/* <button onClick={() => { updateMyActivity() }}>Update Duration</button> */}
-
-            {console.log(newDuration)}
+            <br></br><br></br>
 
             <li>Count:{count}</li>
-
             <input type="number" min="1" placeholder={count} onChange={(event) => setNewCount(Number(event.target.value))}></input><br></br>
+            <br></br>
 
-            {console.log(newCount)}
-
-            <button onClick={() => { updateMyActivity() }}>Update Duration and Count</button><br></br>
-            <button onClick={() => { deleteRoutineActivity(token, routineActivityId), fetchUserRoutines() }}> Delete Activity </button>
+            <button onClick={() => {updateMyActivity(), navigate('./myRoutines')}}>Update Duration and Count</button><br></br>
+            <button onClick={() => {deleteRoutineActivity(token, routineActivityId), fetchUserRoutines(), navigate('./myRoutines') }}> Delete Activity </button>
 
         </ul>
     )

@@ -25,6 +25,7 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                     <main key={id}>
                         <div id='userRoutines'>
                             <div id='userRoutine'>
+                                
                                 <h3 id='userRoutineName'>{name}</h3>
 
                                 <div><Link to={`/routines/${id}/activities`}><button>Attach Activity</button></Link></div>
@@ -41,25 +42,21 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                                 }}>{
                                         activities.map((activity) => {
 
-                                            console.log(activity)
-
                                             const { name, description, duration, count, routineActivityId, id, routineId } = activity
                                             const [newCount, setNewCount] = useState(count);
                                             const [newDuration, setNewDuration] = useState(duration);
 
                                             const editObject = {}
 
-                                            editObject.count = count
-                                            editObject.description = description
-                                            editObject.duration = duration
                                             editObject.id = id
                                             editObject.name = name
+                                            editObject.description = description
+                                            editObject.duration = duration
+                                            editObject.count = count
                                             editObject.routineActivityId = routineActivityId
                                             editObject.routineId = routineId
-                                            
+                                        
                                             const objString = JSON.stringify(editObject)
-
-                                            console.log (editObject)
 
                                             async function updateMyActivity() {
                                                 const updatedActivity = {
@@ -67,7 +64,7 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
                                                     duration: newDuration,
                                                     id: routineActivityId
                                                 }
-                                                console.log(updatedActivity)
+                                            
                                                 let results = await updateRoutineActivity(token, updatedActivity)
 
                                                 if (results.error) {
@@ -82,9 +79,9 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
 
                                                 <ul key={routineActivityId}><strong>Activity:</strong>
 
-                                                    <li>Name:{name}</li>
-                                                    <li>Description:{description}</li>
-                                                    <li>Duration:{duration} minutes</li>
+                                                    <li>Name: {name}</li>
+                                                    <li>Description: {description}</li>
+                                                    <li>Duration: {duration} minutes</li>
 
                                                     <Link to='/editActivity'>
                                                         <button
@@ -96,12 +93,12 @@ const MyRoutines = ({ navigate, userRoutines, fetchUserRoutines }) => {
 
                                                     <input type="number" min="1" placeholder={duration} onChange={(event) => setNewDuration(Number(event.target.value))}></input>
 
-                                                    <li>Count:{count}</li>
+                                                    <li>Count: {count}</li>
                                                     <input type="number" min="1" placeholder={count} onChange={(event) => setNewCount(Number(event.target.value))}></input>
                                                     <br></br>
 
-                                                    <button onClick={() => { updateMyActivity() }}>Update Duration and Count</button><br></br>
-                                                    <button onClick={() => { deleteRoutineActivity(token, routineActivityId), fetchUserRoutines() }}> Delete Activity </button>
+                                                    {/* <button onClick={() => { updateMyActivity() }}>Update Duration and Count</button><br></br>
+                                                    <button onClick={() => { deleteRoutineActivity(token, routineActivityId), fetchUserRoutines() }}> Delete Activity </button> */}
                                                 </ul>
                                             )
                                         })

@@ -274,7 +274,7 @@ export const deleteRoutine = async (token, routineId) => {
 
 export const updateRoutineActivity = async (token, routineActivity) => {
     try {
-        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.id}`, {
+        const response = await fetch(`${baseURL}/routine_activities/${routineActivity.routineActivityId}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

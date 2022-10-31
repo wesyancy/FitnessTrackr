@@ -26,7 +26,7 @@ const EditRoutine = ({ routines, fetchRoutines, fetchUserRoutines, editRErrorMes
       id: routineId
     }
     let results = await editRoutine(updatedRoutine)
-    console.log(updatedRoutine)
+    // console.log(updatedRoutine)
     if (results.error) {
       console.log("Error updating Routine")
       setEditRErrorMessage("Error editing routine - Please ensure at least one field is filled out and routine name is not already in use")
